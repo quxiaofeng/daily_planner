@@ -5,20 +5,43 @@
 \usepackage[a4paper]{geometry}
 
 \hoffset=-0.6in
-%\voffset=-0.4in
+\voffset=-0.2in
 \oddsidemargin=0in
 \evensidemargin=0in
 \textwidth=6in
 \topmargin=-1in
-\textheight=10in
+\textheight=12in
 \parindent=.25in
 
 \pagestyle{empty}
 
 \usepackage[weather]{ifsym}
-%\usepackage{times}
-%\usepackage{datetime}
+
 \usepackage{scrtime}
+
+\usepackage{pgf,tikz}
+\usetikzlibrary{calendar}
+
+\makeatletter%
+\tikzoption{day headings}{\tikzstyle{day heading}=[#1]}
+\tikzstyle{day heading}=[]
+\tikzstyle{day letter headings}=[
+    execute before day scope={ \ifdate{day of month=1}{%
+      \pgfmathsetlength{\pgf@ya}{\tikz@lib@cal@yshift}%
+      \pgfmathsetlength\pgf@xa{\tikz@lib@cal@xshift}%
+      \pgftransformyshift{-\pgf@ya}
+      \foreach \d/\l in {0/M,1/T,2/W,3/T,4/F,5/S,6/S} {
+        \pgf@xa=\d\pgf@xa%
+        \pgftransformxshift{\pgf@xa}%
+        \pgftransformyshift{\pgf@ya}%
+        \node[every day,day heading]{\l};%
+      } 
+    }{}%
+  }%
+]
+
+\makeatother%
+
 
 \begin{document}
 
@@ -99,12 +122,12 @@
 %\def \AmXxEv {$\;$ }
 
 % MAKE CALENDAR ***********************************************
-\begin{table} 
+\begin{table}[ht!]
 
-%{\huge \bf Work Plan For \today }
-{\huge \bf Work Plan For October 6, 2011}
+{\Large \bf Work Plan For October 6, 2011}
 %{\Huge \bf \,\FilledCloud\,}\\
-{\huge \bf \,\FilledWeakRainCloud\,}\\
+%{\huge \bf Work Plan For \today}
+{\Large \bf \FilledWeakRainCloud\,}\\
 %{\huge \bf \,\FilledCloud\,}\\
 %{\huge \bf \,\FilledCloud\,}\\
 %{\huge \bf \,\FilledCloud\,}\\
@@ -125,14 +148,6 @@
 
 % Table  *******************************************************
 
-{\bf 06:00$\sim$07:00}	& \AmEiPl	& \AmEiWo	& \AmEiEv	\\
-\blank 				& \blank 	& \blank	& \blank	\\
-\blank 				& \blank 	& \blank	& \blank	\\
-\hline
-{\bf 07:00$\sim$08:00}	& \AmEiPl	& \AmEiWo	& \AmEiEv	\\
-\blank 				& \blank 	& \blank	& \blank	\\
-\blank 				& \blank 	& \blank	& \blank	\\
-\hline
 {\bf 08:00$\sim$09:00}	& \AmEiPl	& \AmEiWo	& \AmEiEv	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
@@ -201,22 +216,34 @@
 \end{tabular}
 \end{table}
 
+\begin{table}[ht!]
+\begin{tabular}{p{3cm}p{2.8cm}p{3cm}p{2.8cm}p{3cm}}
+\tikz\calendar[dates=2011-09-01 to 2011-09-last,
+    week list,
+    month label above centered,
+    day xshift = 0.8cm,
+    day headings=orange,
+    day letter headings
+];%
+&\blank&%
+\tikz\calendar[dates=2011-10-01 to 2011-10-last,
+    week list,
+    month label above centered,
+    day xshift = 0.8cm,
+    day headings=orange,
+    day letter headings
+];%
+&\blank&%
+\tikz\calendar[dates=2011-11-01 to 2011-11-last,
+    week list,
+    month label above centered,
+    day xshift = 0.8cm,
+    day headings=orange,
+    day letter headings
+];
+\end{tabular}
+\end{table}
 
-
-% WEEK 6 ******************************************************
-%
-%{\bf 0}    & {\bf 0}    & {\bf 0}    & {\bf 0}    & {\bf 0}    & {\bf 0}    & {\bf 0}    \\
-%
-%\blank     &            &            &            &            &            &            \\
-%
-%\XxxMonSub & \XxxLabSub & \XxxWedSub &            & \XxxFriSub &            & \XxxFriSub \\
-%
-%\XxxMonRst & \XxxLabRst & \XxxWedRst &            & \XxxFriRst &            & \XxxFriRst \\
-%
-%\XxxMonSec & \XxxLabSec & \XxxWedSec &            & \XxxFriSec &            & \XxxFriSec \\
-%
-%\blank     &            &            &            &            &            &            \\
-%\hline
 
 
 \end{document}
