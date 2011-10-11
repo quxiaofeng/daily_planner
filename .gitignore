@@ -1,0 +1,9 @@
+# ignore latex compiling files
+*.aux
+*.log
+*.synctex.gz
+*.toc
+# ignore vim temp files
+*~
+# ignore generated pdf files
+*.pdf
