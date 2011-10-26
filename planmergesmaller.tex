@@ -1,0 +1,207 @@
+\documentclass[10pt]{article}
+% by qu xiaofeng
+% October 4, 2011
+
+\usepackage[a4paper]{geometry}
+
+\hoffset=-0.76in
+\voffset=-0in
+\oddsidemargin=0in
+\evensidemargin=0in
+\textwidth=6in
+\topmargin=-1in
+\textheight=12in
+\parindent=.25in
+
+\pagestyle{empty}
+
+\usepackage[weather]{ifsym}
+%\usepackage{times}
+%\usepackage{datetime}
+\usepackage{scrtime}
+
+\usepackage{pgf,tikz}
+\usetikzlibrary{calendar}
+
+\makeatletter%
+\tikzoption{day headings}{\tikzstyle{day heading}=[#1]}
+\tikzstyle{day heading}=[]
+\tikzstyle{day letter headings}=[
+    execute before day scope={ \ifdate{day of month=1}{%
+      \pgfmathsetlength{\pgf@ya}{\tikz@lib@cal@yshift}%
+      \pgfmathsetlength\pgf@xa{\tikz@lib@cal@xshift}%
+      \pgftransformyshift{-\pgf@ya}
+      \foreach \d/\l in {0/M,1/T,2/W,3/T,4/F,5/S,6/S} {
+        \pgf@xa=\d\pgf@xa%
+        \pgftransformxshift{\pgf@xa}%
+        \pgftransformyshift{\pgf@ya}%
+        \node[every day,day heading]{\l};%
+      } 
+    }{}%
+  }%
+]
+
+\makeatother%
+
+\begin{document}
+
+% DEFINITIONS *************************************************
+
+
+\def \blank  {\phantom{blank}}
+
+% template
+%\def \AmXxPl {$\;$ }
+%\def \AmXxWo {$\;$ }
+%\def \AmXxEv {$\;$ }
+
+\newcommand{\PLAN}[2]{
+% MAKE PLAN **************************************************
+\begin{table}[ht!]
+
+
+{\Huge \bf Work Plan For {#1}}
+{\Huge \bf \,{#2}\,}\\
+\phantom{stuff} \\
+\phantom{stuff} \\
+
+\centering
+\begin{tabular}{|l|l|l|l||l|l|l|l|}
+\hline
+
+{\bf \phantom{}Time\phantom{}}
+ & {\bf \phantom{xxxxx}Plan\phantom{xxxxx}}
+ & {\bf \phantom{xxxxx}Work\phantom{xxxxx}}
+ & {\bf \phantom{x}Eval\phantom{x}}
+ & {\bf \phantom{}Time\phantom{}}
+ & {\bf \phantom{xxxxx}Plan\phantom{xxxxx}}
+ & {\bf \phantom{xxxxx}Work\phantom{xxxxx}}
+ & {\bf \phantom{x}Eval\phantom{x}}
+ \\
+\hline
+
+
+% Table  *******************************************************
+
+{\bf 00:00}	& \blank	& \blank	& \blank	& {\bf 12:00}	& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank		& \blank	& \blank	& \blank	\\
+\hline
+{\bf 01:00}	& \blank	& \blank	& \blank	& {\bf 13:00}	& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank		& \blank	& \blank	& \blank	\\
+\hline
+{\bf 02:00}	& \blank	& \blank	& \blank	& {\bf 14:00}	& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank		& \blank	& \blank	& \blank	\\
+\hline
+{\bf 03:00}	& \blank	& \blank	& \blank	& {\bf 15:00}	& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank		& \blank	& \blank	& \blank	\\
+\hline
+{\bf 04:00}	& \blank	& \blank	& \blank	& {\bf 16:00}	& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank		& \blank	& \blank	& \blank	\\
+\hline
+{\bf 05:00}	& \blank	& \blank	& \blank	& {\bf 17:00}	& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank		& \blank	& \blank	& \blank	\\
+\hline
+{\bf 06:00}	& \blank	& \blank	& \blank	& {\bf 18:00}	& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank		& \blank	& \blank	& \blank	\\
+\hline
+{\bf 07:00}	& \blank	& \blank	& \blank	& {\bf 19:00}	& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank		& \blank	& \blank	& \blank	\\
+\hline
+{\bf 08:00}	& \blank	& \blank	& \blank	& {\bf 20:00}	& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank		& \blank	& \blank	& \blank	\\
+\hline
+{\bf 09:00}	& \blank	& \blank	& \blank	& {\bf 21:00}	& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank		& \blank	& \blank	& \blank	\\
+\hline
+{\bf 10:00}	& \blank	& \blank	& \blank	& {\bf 22:00}	& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank		& \blank	& \blank	& \blank	\\
+\hline
+{\bf 11:00}	& \blank	& \blank	& \blank	& {\bf 23:00}	& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank 		& \blank	& \blank	& \blank	\\
+\blank 		& \blank 	& \blank	& \blank	& \blank		& \blank	& \blank	& \blank	\\
+\hline
+
+
+\end{tabular}
+\end{table}
+
+\begin{table}[ht!]
+\begin{tabular}{p{3cm}p{2.8cm}p{3cm}p{2.8cm}p{3cm}}
+\tikz\calendar[dates=2011-10-01 to 2011-10-30,
+    week list,
+    month label above centered,
+    day xshift = 0.8cm,
+    day headings=orange,
+    day letter headings
+];%
+&\phantom{xxxxxxxxxxxx}&%
+\tikz\calendar[dates=2011-11-01 to 2011-11-last,
+    week list,
+    month label above centered,
+    day xshift = 0.8cm,
+    day headings=orange,
+    day letter headings
+];%
+&\phantom{xxxxxxxxxxxx}&%
+\tikz\calendar[dates=2011-12-01 to 2011-12-last,
+    week list,
+    month label above centered,
+    day xshift = 0.8cm,
+    day headings=orange,
+    day letter headings
+];
+\end{tabular}
+\end{table}
+
+}
+
+\PLAN{Oct. 27, 2011}{\Sun}
+\clearpage 
+
+\PLAN{Oct. 28, 2011}{\Sun}
+\clearpage 
+
+\PLAN{Oct. 29, 2011}{\Sun}
+\clearpage 
+
+\PLAN{Oct. 30, 2011}{\Sun}	
+\clearpage 
+
+\PLAN{Oct. 31, 2011}{\Sun}
+\clearpage 	
+
+\PLAN{Nov. 1, 2011}{\Sun}
+\clearpage  	
+
+\PLAN{Nov. 2, 2011}{\SunCloud}
+\clearpage 
+
+
+% Plans ******************************************************
+%
+
+
+\end{document}
