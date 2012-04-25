@@ -1,0 +1,112 @@
+\documentclass{article}
+% by qu xiaofeng
+% October 4, 2011
+
+\usepackage[paperwidth=95mm, paperheight=160mm]{geometry}
+
+\usepackage{stmaryrd}
+
+\hoffset=-15mm
+\voffset=-4mm
+\oddsidemargin=0mm
+\evensidemargin=0mm
+\textwidth=75mm
+\topmargin=-30mm
+\textheight=140mm
+\parindent=10mm
+
+\pagestyle{empty}
+
+\usepackage[weather]{ifsym}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper, border shrink=0mm]
+
+\begin{document}
+
+% DEFINITIONS ***************************************************
+
+
+\def \blank  {\phantom{x}}
+
+\def \placeholder {$\;$ }
+
+\def \blankrow {{\bf \phantom{xxxx}}%
+&{\bf \phantom{xxxxxxxxxxxx}}%
+&{\bf \phantom{xxxxxxxxxxxx}}%
+&{\bf \phantom{xxxxx}}}
+
+\def \headingline {{\bf Time}%
+&{\bf Schedule}%
+&{\bf Activity}%
+&{\bf Check}}
+
+\def \evaluate {\bf \phantom{}$\boxempty$\phantom{}}
+
+\newcommand{\checklist}[2]{
+% MAKE CHECK LIST ***********************************************
+\begin{table}[ht!]
+
+{\bf \large {#1}}
+{\bf \phantom{x}{#2}\,}
+
+\centering
+\begin{tabular}{rccr}
+\blankrow\\
+\headingline\\
+\hline
+
+% Table  ********************************************************
+
+{\bf  0:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf  1:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf  2:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf  3:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf  4:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf  5:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf  6:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf  7:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf  8:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf  9:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf 10:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf 11:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf 12:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf 13:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf 14:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf 15:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf 16:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf 17:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf 18:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf 19:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf 20:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf 21:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf 22:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf 23:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+{\bf 24:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+\blankrow\\
+{\bf  Memo} & {\placeholder} & {\placeholder} & {\placeholder} \\ \hline
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\hline
+\end{tabular}
+\end{table}
+}
+
+\checklist{April 26, 2012}{\FilledRainCloud}
+\clearpage
+\checklist{April 27, 2012}{\FilledCloud}
+\clearpage
+\checklist{April 28, 2012}{\Cloud}
+\clearpage
+\checklist{April 29, 2012}{\Cloud}
+\clearpage
+\checklist{April 30, 2012}{\Cloud}
+\clearpage
+\checklist{May 1, 2012}{\SunCloud}
+\clearpage
+\checklist{May 2, 2012}{\Sun}
+\clearpage
+\checklist{May 3, 2012}{\Sun}
+\clearpage
+\end{document}
