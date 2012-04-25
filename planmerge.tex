@@ -121,12 +121,13 @@
 %\def \AmXxWo {$\;$ }
 %\def \AmXxEv {$\;$ }
 
-\newcommand{\PLAN}[2]{
+\newcommand{\PLAN}{
 % MAKE PLAN **************************************************
 \begin{table}[ht!]
 
-{\Huge \bf Work Plan For {#1}}
-{\Huge \bf \,{#2}\,}\\
+%{\Huge \bf Work Plan For {#1}}
+%{\Huge \bf \,{#2}\,}\\
+{\Huge \bf Work Plan }\\
 \phantom{stuff} \\
 
 \centering
@@ -143,77 +144,79 @@
 
 % Table  *******************************************************
 
-{\bf 08:00$\sim$09:00}	& \AmEiPl	& \AmEiWo	& \AmEiEv	\\
-\blank 				& \blank 	& \blank	& \blank	\\
-\blank 				& \blank 	& \blank	& \blank	\\
-\hline
 {\bf 09:00$\sim$10:00}	& \AmNiPl	& \AmNiWo	& \AmNiEv	\\
+\blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \hline
 {\bf 10:00$\sim$11:00}	& \AmTePl	& \AmTeWo	& \AmTeEv	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
+\blank 				& \blank 	& \blank	& \blank	\\
 \hline
 {\bf 11:00$\sim$12:00}	& \AmElPl	& \AmElWo	& \AmElEv	\\
+\blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \hline
 {\bf 12:00$\sim$13:00}	& \AmTwPl	& \AmTwWo	& \AmTwEv	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
+\blank 				& \blank 	& \blank	& \blank	\\
 \hline
 {\bf 13:00$\sim$14:00}	& \AmThPl	& \AmThWo	& \AmThEv	\\
+\blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \hline
 {\bf 14:00$\sim$15:00}	& \AmFoPl	& \AmFoWo	& \AmFoEv	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
+\blank 				& \blank 	& \blank	& \blank	\\
 \hline
 {\bf 15:00$\sim$16:00}	& \AmFiPl	& \AmFiWo	& \AmFiEv	\\
+\blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \hline
 {\bf 16:00$\sim$17:00}	& \AmSiPl	& \AmSiWo	& \AmSiEv	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
+\blank 				& \blank 	& \blank	& \blank	\\
 \hline
 {\bf 17:00$\sim$18:00}	& \AmSePl	& \AmSeWo	& \AmSeEv	\\
+\blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \hline
 {\bf 18:00$\sim$19:00}	& \AmEtPl	& \AmEtWo	& \AmEtEv	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
+\blank 				& \blank 	& \blank	& \blank	\\
 \hline
 {\bf 19:00$\sim$20:00}	& \AmNtPl	& \AmNtWo	& \AmNtEv	\\
+\blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \hline
 {\bf 20:00$\sim$21:00}	& \AmTtPl	& \AmTtWo	& \AmTtEv	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
+\blank 				& \blank 	& \blank	& \blank	\\
 \hline
 {\bf 21:00$\sim$22:00}	& \AmToPl	& \AmToWo	& \AmToEv	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
-\hline
-{\bf 22:00$\sim$23:00}	& \AmTnPl	& \AmTnWo	& \AmTnEv	\\
-\blank 				& \blank 	& \blank	& \blank	\\
 \blank 				& \blank 	& \blank	& \blank	\\
 \hline
-{\bf 23:00$\sim$24:00}	& \AmTrPl	& \AmTrWo	& \AmTrEv	\\
-\blank 				& \blank 	& \blank	& \blank	\\
-\blank 				& \blank 	& \blank	& \blank	\\
-\hline
+
 
 \end{tabular}
 \end{table}
 
 \begin{table}[ht!]
 \begin{tabular}{p{3cm}p{2.8cm}p{3cm}p{2.8cm}p{3cm}}
-\tikz\calendar[dates=2011-10-01 to 2011-10-30,
+\tikz\calendar[dates=2012-03-01 to 2012-03-last,
     week list,
     month label above centered,
     day xshift = 0.8cm,
@@ -221,7 +224,7 @@
     day letter headings
 ];%
 &\blank&%
-\tikz\calendar[dates=2011-11-01 to 2011-11-last,
+\tikz\calendar[dates=2012-04-01 to 2012-04-last,
     week list,
     month label above centered,
     day xshift = 0.8cm,
@@ -229,7 +232,7 @@
     day letter headings
 ];%
 &\blank&%
-\tikz\calendar[dates=2011-12-01 to 2011-12-last,
+\tikz\calendar[dates=2012-05-01 to 2012-05-last,
     week list,
     month label above centered,
     day xshift = 0.8cm,
@@ -241,26 +244,11 @@
 
 }
 
-\PLAN{Oct. 27, 2011}{\Sun}
+\PLAN{}
+\clearpage 
+\PLAN{}
 \clearpage 
 
-\PLAN{Oct. 28, 2011}{\Sun}
-\clearpage 
-
-\PLAN{Oct. 29, 2011}{\Sun}
-\clearpage 
-
-\PLAN{Oct. 30, 2011}{\Sun}	
-\clearpage 
-
-\PLAN{Oct. 31, 2011}{\Sun}
-\clearpage 	
-
-\PLAN{Nov. 1, 2011}{\Sun}
-\clearpage  	
-
-\PLAN{Nov. 2, 2011}{\SunCloud}
-\clearpage 
 
 
 % Plans ******************************************************
