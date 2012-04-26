@@ -9,3 +9,5 @@
 *.pdf
 # README.md test output
 README.html
+# temp file
+*.swp
