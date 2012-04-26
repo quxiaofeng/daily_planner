@@ -6,8 +6,8 @@
 
 \usepackage{stmaryrd}
 
-\hoffset=-15mm
-\voffset=-4mm
+\hoffset=-12mm%TODO: maybe a little more right if possible
+\voffset=-1mm
 \oddsidemargin=0mm
 \evensidemargin=0mm
 \textwidth=75mm
@@ -31,23 +31,27 @@
 
 \def \placeholder {$\;$ }
 
-\def \blankrow {{\bf \phantom{xxxx}}%
-&{\bf \phantom{xxxxxxxxxxxx}}%
-&{\bf \phantom{xxxxxxxxxxxx}}%
-&{\bf \phantom{xxxxx}}}
+\def \blankrow {{\bf \small \phantom{xxx}}%
+&{\bf \small \phantom{xxxxxxxxxxxx}}%
+&{\bf \small \phantom{xxxxxxxxxxxx}}%
+&{\bf \small \phantom{xxxxx}}}
 
-\def \headingline {{\bf Time}%
-&{\bf Schedule}%
-&{\bf Activity}%
-&{\bf Check}}
+\def \headingline {{\bf \small Time}%
+&{\bf \small Schedule}%
+&{\bf \small Activity}%
+&{\bf \small Check}}
 
 \def \evaluate {\bf \phantom{}$\boxempty$\phantom{}}
+
+\newcommand{\planitem}[1]{
+{\bf \small{#1}} & {\placeholder} & {\placeholder} & \evaluate
+}
 
 \newcommand{\checklist}[2]{
 % MAKE CHECK LIST ***********************************************
 \begin{table}[ht!]
 
-{\bf \large {#1}}
+{\bf \Large {#1}}
 {\bf \phantom{x}{#2}\,}
 
 \centering
@@ -58,32 +62,33 @@
 
 % Table  ********************************************************
 
-{\bf  0:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf  1:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf  2:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf  3:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf  4:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf  5:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf  6:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf  7:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf  8:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf  9:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf 10:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf 11:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf 12:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf 13:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf 14:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf 15:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf 16:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf 17:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf 18:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf 19:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf 20:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf 21:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf 22:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf 23:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
-{\bf 24:00} & {\placeholder} & {\placeholder} & \evaluate\\ \hline
+\planitem{ 0:00}\\ \hline
+\planitem{ 1:00}\\ \hline
+\planitem{ 2:00}\\ \hline
+\planitem{ 3:00}\\ \hline
+\planitem{ 4:00}\\ \hline
+\planitem{ 5:00}\\ \hline
+\planitem{ 6:00}\\ \hline
+\planitem{ 7:00}\\ \hline
+\planitem{ 8:00}\\ \hline
+\planitem{ 9:00}\\ \hline
+\planitem{10:00}\\ \hline
+\planitem{11:00}\\ \hline
+\planitem{12:00}\\ \hline
+\planitem{13:00}\\ \hline
+\planitem{14:00}\\ \hline
+\planitem{15:00}\\ \hline
+\planitem{16:00}\\ \hline
+\planitem{17:00}\\ \hline
+\planitem{18:00}\\ \hline
+\planitem{19:00}\\ \hline
+\planitem{20:00}\\ \hline
+\planitem{21:00}\\ \hline
+\planitem{22:00}\\ \hline
+\planitem{23:00}\\ \hline
+\planitem{24:00}\\ \hline
 \blankrow\\
+
 {\bf  Memo} & {\placeholder} & {\placeholder} & {\placeholder} \\ \hline
 \blankrow\\
 \blankrow\\

@@ -2,12 +2,12 @@
 % by qu xiaofeng
 % October 4, 2011
 
-\usepackage[paperwidth=95mm, paperheight=160mm]{geometry}
+\usepackage[paperwidth=105mm, paperheight=148mm]{geometry}
 
 \usepackage{stmaryrd}
 
-\hoffset=-13mm
-\voffset=-2mm
+\hoffset=-1mm
+\voffset=-3mm
 \oddsidemargin=0mm
 \evensidemargin=0mm
 \textwidth=75mm
@@ -27,11 +27,15 @@
 % DEFINITIONS ***************************************************
 
 
-\def \blank  {\phantom{xxxx}}
-\def \PlaceHolder {$\;$ }
-\def \blankrow {{\bf \phantom{xxxx}}%
-&{\bf \phantom{xxxxxxxxxx}}%
-&{\bf \phantom{x}}}
+\def \blank  {\small \phantom{x}}
+\def \PlaceHolder {\small $\;$ }
+\def \blankrow {{\bf \small  \phantom{xxxx}}%
+&{\bf \small \phantom{xxxxxxxxxxxxxxxxxxxxxx}}%
+&{\bf \small \phantom{x}}}
+
+\newcommand{\checkitem}[2]{
+    {\bf \small {#1}} &{\small {#2}}	& {\small $\boxempty$} 
+}
 
 \newcommand{\checklist}[2]{
 % MAKE CHECK LIST ***********************************************
@@ -41,68 +45,64 @@
 {\bf \phantom{x}{#2}\,}\\
 
 \centering
-\begin{tabular}{lll}
-
-\hline
-
-\blankrow\\
-
+\begin{tabular}{rlr}
 % Table  ********************************************************
 
-{\bf Books  	}	&{Important?									}	& $\boxempty$ \\
-{\bf \blank 	}	&{Urgent?											}	& $\boxempty$ \\
-{\bf \blank 	}	&{Skim through before reading	}	& $\boxempty$ \\
+\hline
 \blankrow\\
-{\bf Tasks  	}	&{Important?									}	& $\boxempty$ \\
-{\bf \blank 	}	&{Urgent?											}	& $\boxempty$ \\
-{\bf \blank 	}	&{Can be assigned to others?	}	& $\boxempty$ \\
-{\bf \blank 	}	&{Plan before doing						}	& $\boxempty$ \\
-{\bf \blank 	}	&{Finish one at a time				}	& $\boxempty$ \\
-{\bf \blank 	}	&{Assign others to remind			}	& $\boxempty$ \\
-{\bf \blank 	}	&{Keep task list short				}	& $\boxempty$ \\
-\blankrow\\
-{\bf Websites	}	&{Relevent?										}	& $\boxempty$ \\
-{\bf \blank 	}	&{Other ways?									}	& $\boxempty$ \\
-\blankrow\\
-{\bf Papers  	}	&{Print large									}	& $\boxempty$ \\
-{\bf \blank 	}	&{Read with color-notes				}	& $\boxempty$ \\
-{\bf \blank 	}	&{Bind into volumns						}	& $\boxempty$ \\
-\blankrow\\
-{\bf Codes  	}	&{Manage with Git 						}	& $\boxempty$ \\
-{\bf \blank 	}	&{Generate UML for check			}	& $\boxempty$ \\
-\blankrow\\
-{\bf Plan	  	}	&{Detailed to every hour			}	& $\boxempty$ \\
-{\bf \blank 	}	&{Including breaks						}	& $\boxempty$ \\
-{\bf \blank 	}	&{Reserve time for thinking		}	& $\boxempty$ \\
-\blankrow\\
-{\bf Emotions	}	&{Progress takes time					}	& $\boxempty$ \\
-{\bf \blank 	}	&{Ignore others' infuences		}	& $\boxempty$ \\
-{\bf \blank 	}	&{Concentrate to my own tasks	}	& $\boxempty$ \\
-{\bf \blank 	}	&{Step by step								}	& $\boxempty$ \\
-{\bf \blank 	}	&{reassure ``on the right track''	}	& $\boxempty$ \\
+\checkitem{Books}{Important?} \\
+\checkitem{\blank }{Urgent?} \\
+\checkitem{\blank }{Skim through before reading} \\
+
+\checkitem{Tasks}{Important?} \\
+\checkitem{\blank }{Urgent?} \\
+\checkitem{\blank }{Can be assigned to others?} \\
+\checkitem{\blank }{Plan before doing	} \\
+\checkitem{\blank }{Finish one at a time} \\
+\checkitem{\blank }{Assign others to remind} \\
+\checkitem{\blank }{Keep task list short} \\
+
+\checkitem{Websites}{Relevent?} \\
+\checkitem{\blank }{Print out} \\
+
+\checkitem{Papers}{Print large} \\
+\checkitem{\blank }{Read with color-notes} \\
+\checkitem{\blank }{Bind into volumns} \\
+
+\checkitem{Codes}{Manage with Git} \\
+\checkitem{\blank }{Generate UML for check} \\
+
+\checkitem{Plan}{Detailed to every hour} \\
+\checkitem{\blank }{Including breaks} \\
+\checkitem{\blank }{Reserve time for thinking} \\
+
+\checkitem{Emotions}{Progress takes time} \\
+\checkitem{\blank }{Ignore others' infuences} \\
+\checkitem{\blank }{Concentrate to my own tasks} \\
+\checkitem{\blank }{Step by step} \\
+\checkitem{\blank }{Reassure ``on the right track''} \\
 
 \blankrow\\
-
 \hline
 
 \end{tabular}
 \end{table}
 }
 
-\checklist{\today}{\FilledRainCloud}
+\checklist{April 26, 2012}{\FilledRainCloud}
 \clearpage
-\checklist{\today}{\FilledRainCloud}
+\checklist{April 27, 2012}{\FilledCloud}
 \clearpage
-\checklist{\today}{\FilledRainCloud}
+\checklist{April 28, 2012}{\Cloud}
 \clearpage
-\checklist{\today}{\FilledRainCloud}
+\checklist{April 29, 2012}{\Cloud}
 \clearpage
-\checklist{\today}{\FilledRainCloud}
+\checklist{April 30, 2012}{\Cloud}
 \clearpage
-\checklist{\today}{\FilledRainCloud}
+\checklist{May 1, 2012}{\SunCloud}
 \clearpage
-\checklist{\today}{\FilledRainCloud}
+\checklist{May 2, 2012}{\Sun}
 \clearpage
-\checklist{\today}{\FilledRainCloud}
+\checklist{May 3, 2012}{\Sun}
 \clearpage
 \end{document}
