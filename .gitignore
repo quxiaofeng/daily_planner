@@ -7,3 +7,5 @@
 *~
 # ignore generated pdf files
 *.pdf
+# README.md test output
+README.html
