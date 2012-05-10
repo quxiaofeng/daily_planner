@@ -38,7 +38,7 @@ Defaults
 Supported Weather Symbols
 -----------------------
 
- Using [ifsym Package](http://www.ctan.org/pkg/ifsym)
+Using [ifsym Package](http://www.ctan.org/pkg/ifsym)
 
     \Sun
     \NoSun
