@@ -1,0 +1,803 @@
+% \iffalse
+% 
+% evautofl.dtx
+% Copyright 2003, 2005 Emanuele Vicentini
+% 
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either
+% version 1.3a of this license or (at your option) any
+% later version.
+% The latest version of the license is in
+%    http://www.latex-project.org/lppl.txt
+% 
+% Author: Emanuele Vicentini
+%         (emanuelevicentini at yahoo dot it)
+% 
+% This work has the LPPL maintenance status "author-maintained".
+% 
+% This work consists of the files: README, evautofl.dtx, evautofl.ins and
+% the derived files evautofl.sty and evautoflexample.tex
+% 
+% This product is based off autofilo.dtx distributed in the LaTeX Calendar
+% Bundle, v. 3.1, copyright (C) 1996-1997 by Frank Bennet
+% 
+%<*driver>
+\documentclass[10pt]{ltxdoc}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{evautofl.dtx}
+\end{document}
+%</driver>
+% 
+%<*example>
+\documentclass[12pt, a4paper]{article}
+\usepackage{evautofl}
+%% Not strictly necessary, but useful :-)
+\usepackage{marvosym}
+\newcommand*{\newentry}[1]{\hbox to 0.4\textwidth{#1~\dotfill\par}}
+
+
+
+\begin{document}
+
+\begin{autofilo}{}
+As you can see, you can put almost anything here, also \MartinVogel~himself
+{\Large\Smiley}.
+
+\bigskip\bigskip
+
+With a bit of care you could write custom refill pages for your filofax:
+
+\medskip
+
+\newentry{\Telefon}\newentry{\Mobilefone}\newentry{\Email}
+
+\bigskip\bigskip
+
+Happy \TeX ing!
+\end{autofilo}
+
+\end{document}
+%</example>
+% \fi
+% 
+% 
+% 
+% \CheckSum{695}
+% 
+% \CharacterTable
+%   {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%    Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%    Digits        \0\1\2\3\4\5\6\7\8\9
+%    Exclamation   \!     Double quote  \"     Hash (number) \#
+%    Dollar        \$     Percent       \%     Ampersand     \&
+%    Acute accent  \'     Left paren    \(     Right paren   \)
+%    Asterisk      \*     Plus          \+     Comma         \,
+%    Minus         \-     Point         \.     Solidus       \/
+%    Colon         \:     Semicolon     \;     Less than     \<
+%    Equals        \=     Greater than  \>     Question mark \?
+%    Commercial at \@     Left bracket  \[     Backslash     \\
+%    Right bracket \]     Circumflex    \^     Underscore    \_
+%    Grave accent  \`     Left brace    \{     Vertical bar  \|
+%    Right brace   \}     Tilde         \~}
+% 
+% 
+% 
+% \changes{v0.1}{2003/03/21}{First public release; there are certainly some
+%   bugs}
+% \changes{v0.2}{2005/01/14}{Added a little, stupid example of use}
+% 
+% 
+% 
+% \def\fileversion{0.3}
+% \def\filedate{2005/01/20}
+% 
+% 
+% 
+% \newcommand*{\nomefile}[1]{\texttt{#1}}
+% \newcommand*{\opzione}[1]{\texttt{#1}}
+% \newcommand*{\pacchetto}[1]{\textsf{#1}}
+% 
+% 
+% 
+% \title{User's Guide to the \pacchetto{evautofl} package\thanks{This file
+% is version number \fileversion; it was last revised on \filedate. Many
+% thanks to Geert Kloosterman for the priceless bug reports.}}
+% \author{Emanuele Vicentini\\(\texttt{emanuelevicentini at yahoo dot it})}
+% \date{\filedate}
+% 
+% 
+% 
+% \maketitle
+% \begin{abstract}
+%     This package provides an environment within which pages are framed
+%     with cut lines and printed with punch-marks, so that printed text can
+%     easily be inserted into a filofax or binder.
+% \end{abstract}
+% \tableofcontents
+% 
+% 
+% 
+% \section{Brief Introduction}
+% For the original documentation see the files \nomefile{calguide.tex} and
+% \nomefile{autofilo.dtx} distributed in the \LaTeX\ Calendar Bundle.
+% 
+% The original code has been brutally hacked to ``cut'' the coupled pages so
+% now it is possible to mangle the output with \nomefile{pstops} or
+% \nomefile{psnup} to have, say, two or more pages on a single sheet and with
+% a duplex printer (or a simplex one and a lot of patience) save a lot of
+% paper. For a brief introduction to \nomefile{pstops} see \S\ref{sec:pstops}.
+% 
+% This manual is typeset according to the conventions of the
+% \LaTeX~\textsc{docstrip} utility which enables the automatic extraction of
+% the \LaTeX~macro source files~\cite{GOOSSENS94}.
+% 
+% 
+% 
+% \section{About the Style}
+% This style provides a rough solution to the design problem it addresses,
+% but it does work. Pages are always printed in landscape, rotated using the
+% \pacchetto{lscape} package from the \pacchetto{graphics} bundle, and
+% centered on the physical paper\footnote{As a technical note, the frame
+% itself is not rotated, because it is inserted independently of the output
+% boxes controlled by the \LaTeX~output routine. The output modes
+% (two-column, and a hacked-together four-column mode) have been modified to
+% understand blocks of text as \cs{hbox}es to be laid atop one another,
+% rather than as \cs{vbox}es to be set alongside one another.}. It accepts
+% two options, \opzione{twocolumn} (the default) and \opzione{fourcolumn}.
+% 
+% The style provides an environment called \texttt{autofilo}. Most often,
+% users of this package will be style authors who want to incorporate it
+% into other environments that do more specific things. Because
+% \texttt{autofilo} accepts several \pacchetto{keyval}-style parameters,
+% style authors may have a use for documentation for those optional
+% parameters. So here is some sample documentation:
+% 
+% \begin{description}
+% \item[\opzione{punchcluster}] Most filofaxes have two or or more clusters
+% 	or groups of punches to hold the pages in place. This option sets
+% 	the number of punches in each cluster. The default is three.
+% \item[\opzione{intraspace}] This governs the space between punchouts within
+% 	a group. The default is 19.25mm.
+% \item[\opzione{punchgroups}] This option sets the number of groups of
+% 	punches. The default is two groups.
+% \item[\opzione{interspace}] This option sets the distance between the
+% 	groups of punches. The default is 51.25mm.
+% \item[\opzione{pageheight}] This fixes the height of a filofax page (not
+% 	the physical paper on which it is printed). The default is 172mm.
+% \item[\opzione{pagewidth}] This fixes the width of an individual page. The
+% 	physical printed area will be twice this figure. The default is
+% 	95mm, for a 190mm printed area.
+% \item[\opzione{grip}] This adjusts the distance from the edge of the page
+% 	to the outer edge of the punchouts. Defaults to 5mm.
+% \item[\opzione{punchmargin}] This adjusts the distance from the edge of the
+% 	text to the inner edge of the punchouts. Defaults to 2mm.
+% \item[\opzione{punchpoints}] Size, in points, of punchouts\footnote{Please,
+% 	note that the original documentation reads \opzione{punchsize} but
+% 	the option name is really \opzione{punchpoints}. Also, take care to
+% 	write no dimension specification after the number.}. Defaults to 15.
+% \item[\opzione{topspace}] Gap between top of filofax page and top of text
+% 	page.
+% \item[\opzione{bottomspace}] Gap between bottom of filofax page and bottom
+% 	of text page.
+% \item[\opzione{jawspread}] If set to a positive length, this places a set
+% 	of rules the width of the punchmarks on either side of each
+% 	punchhole, centered on its center and spread the distance specified.
+% 	This can be useful as a guide with some one-hole punches that are
+% 	designed to be used ``blind''.
+% \item[\opzione{jawline}] Sets the width of the lines used to make jawmarks.
+% 	The default value is \texttt{0.4pt}.
+% \end{description}
+% 
+% 
+% 
+% \section{Wrapping \nomefile{pstops} for an easy use}\label{sec:pstops}
+% Courtesy of Geert Kloosterman, here follows a script that wrap
+% \nomefile{pstops} and some of its many options in an easier command line
+% program: all you need is the \emph{psutils} bundle and a sh-compatible
+% shell (ash, bash, ksh, etc.). Please, note that this script is suitable
+% only for A4 paper size, but can be easily customized.
+% 
+% \begin{verbatim}
+%#!/bin/sh
+%
+%# duplex-calendar -- print the evautlfl output 3 sheets per side (A4)
+%# Geert Kloosterman 2005-01-11
+%
+%if [ -z "$1" ]; then
+%  echo "Usage: $(basename "$0") <calendar-file.ps>" 1>&2
+%  echo  1>&2
+%  echo "Redirect the output to a file or your printer." 1>&2
+%  echo "Make sure your printer is in tumble mode when printing." 1>&2
+%  exit 1
+%fi
+% 
+%shift=9.6cm
+%pstops  -pa4 \
+%  "6:0(0,$shift)+2(0,0cm)+4(0,-$shift),1(0,-$shift)+3(0,0cm)+5(0,$shift)" \
+%  "$1"
+% \end{verbatim}
+% 
+% 
+% 
+% \StopEventually{%
+%   \bibliographystyle{alpha}
+%   \begin{thebibliography}{GMS94}
+%   \addcontentsline{toc}{section}{\refname}
+%   \bibitem[GMS94]{GOOSSENS94} Michel Goossens, Frank Mittelbach and
+%   	Alexander Samarin. \emph{The \LaTeX\ Companion}. Addison-Wesley
+%   	Company, 1994.
+%   \end{thebibliography}}
+% 
+% 
+% 
+% \section{The Style File}
+% 
+% 
+% 
+% \subsection{Preliminaries}
+% Use \LaTeXe, and tell the user who we are.
+%    \begin{macrocode}
+%<*style>
+\NeedsTeXFormat{LaTeX2e}[1995/06/01]
+\ProvidesPackage{evautofl}[2005/01/20 v0.3 Filofax page outlines]
+%    \end{macrocode}
+% 
+% 
+% 
+% \subsection{Options and required packages}
+% We need a boolean to process our sole option.
+%    \begin{macrocode}
+\newif\if@usequadruplecolumn
+%    \end{macrocode}
+% We provide four columns as an option. Two columns (one for each side of
+% what will be the filofax page) will be the default.
+%    \begin{macrocode}
+\DeclareOption{fourcolumn}{\@usequadruplecolumntrue}
+%    \end{macrocode}
+% Process the option if present, and load supporting packages.
+%    \begin{macrocode}
+\ProcessOptions
+\RequirePackage{lscape}
+\RequirePackage{keyval}
+%    \end{macrocode}
+% 
+% 
+% 
+% \subsection{Calendar Setup}
+% Declare some variables.
+%    \begin{macrocode}
+\newif\if@quadruplecolumn
+\newbox\@leftleftcolumn
+\newbox\@leftrightcolumn
+\newbox\@rightleftcolumn
+\newbox\@rightrightcolumn
+\newcount\af@punchcluster
+\newcount\af@punchgroups
+\newlength\af@interspace
+\newlength\af@intraspace
+\newlength\af@grip
+\newlength\af@punchmargin
+\newcount\af@punchsize
+\newlength\af@punchwidth
+\newlength\af@halfpunchwidth
+\newcount\af@subtempcount
+\newcount\af@tempcount
+\newlength\af@textwidth
+\newlength\af@marginrel
+\newlength\af@halftextwidth
+\newlength\af@textheight
+\newlength\af@topmargin
+\newlength\af@bottommargin
+\newcount\col@no
+\newlength\af@jawspread
+\newlength\af@halfjawspread
+\newlength\af@jawline
+%    \end{macrocode}
+% 
+% \begin{macro}{\quadruplecolumn}
+% We'll need a macro to turn on the four-column mode. This is just a
+% modified version of \cs{twocolumn} in the \LaTeX{} distribution.
+%    \begin{macrocode}
+\def\quadruplecolumn{%
+  \clearpage
+  \global\columnwidth\textwidth
+  \global\advance\columnwidth-3\columnsep
+  \global\divide\columnwidth by4\relax
+  \global\hsize\columnwidth
+  \global\linewidth\columnwidth
+  \global\@twocolumntrue
+  \global\@quadruplecolumntrue
+  \global\@firstcolumntrue
+  \col@number=4\relax}
+%    \end{macrocode}
+% \end{macro}
+% 
+% 
+% 
+% \subsection{Output routines}
+% \begin{macro}{\@opcol}
+% Catch the output routine when the new mode is in effect.
+%    \begin{macrocode}
+\def\@opcol{%
+  \if@twocolumn
+    \if@quadruplecolumn
+      \@outputqdrplcol
+    \else
+      \@outputdblcol
+    \fi
+  \else
+    \@outputpage
+  \fi
+  \global \@mparbottom \z@ \global \@textfloatsheight \z@
+  \@floatplacement}
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\@outputqdrplcol}
+% \changes{v0.2}{2005/01/14}{Corrected the ``horizontal'' shift of odd pages}
+% \changes{v0.3}{2005/01/20}{Corrected (really!) the ``horizontal'' shift of
+%   odd pages}
+% \begin{macro}{\@outputdblcol}
+% \changes{v0.2}{2005/01/14}{Corrected the ``horizontal'' shift of odd pages}
+% \changes{v0.3}{2005/01/20}{Corrected (really!) the ``horizontal'' shift of
+%   odd pages}
+% Add a new output routine for the new mode, and a modified version of the
+% two-column output routine.  Note that these work \emph{only} inside the
+% \texttt{landscape} environment.
+%    \begin{macrocode}
+\def\@outputqdrplcol{%
+  \ifcase\col@no
+    \global\@firstcolumnfalse
+    \global\setbox\@leftleftcolumn \box\@outputbox
+  \or
+    \global\setbox\@leftrightcolumn \box\@outputbox
+    \setbox\@outputbox \vbox to \textwidth{%
+      \vss
+      \hb@xt@ \textheight{%
+        \vrule height \columnwidth
+               depth 0pt
+               width 0pt
+        \box\@leftrightcolumn
+        \hss}%
+      \vskip\columnsep
+      \hb@xt@ \textheight{%
+        \vrule height \columnwidth
+               depth 0pt
+               width 0pt
+        \box\@leftleftcolumn
+        \hss}%
+      \vskip\af@halftextwidth}%
+    \@combinedblfloats
+    \@outputpage
+    \begingroup
+      \@dblfloatplacement
+      \@startdblcolumn
+      \@whilesw\if@fcolmade \fi
+        {\@outputpage\@startdblcolumn}%
+    \endgroup
+  \or
+    \global\setbox\@rightleftcolumn \box\@outputbox
+  \or
+    \global\@firstcolumntrue
+    \global\setbox\@rightrightcolumn \box\@outputbox
+    \setbox\@outputbox \vbox to \textwidth{%
+      \hb@xt@ \textheight{%
+        \vrule height \columnwidth
+               depth 0pt
+               width 0pt
+        \box\@rightrightcolumn
+        \hss}%
+      \vskip\columnsep
+      \hb@xt@ \textheight{%
+        \vrule height \columnwidth
+               depth 0pt
+               width 0pt
+        \box\@rightleftcolumn
+        \hss}%
+      \vfil}%
+    \@combinedblfloats
+    \@outputpage
+    \begingroup
+      \@dblfloatplacement
+      \@startdblcolumn
+      \@whilesw\if@fcolmade \fi
+        {\@outputpage\@startdblcolumn}%
+    \endgroup
+  \fi
+  \global\advance\col@no by 1
+  \ifnum\col@no=4
+    \global\col@no=0
+  \fi}
+\def\@outputdblcol{%
+  \if@firstcolumn
+    \global\@firstcolumnfalse
+    \setbox\@outputbox \vbox to \textwidth{%
+      \vss
+      \hbox to \textheight{%
+        \box\@outputbox}%
+      \vskip\af@halftextwidth}%
+  \else
+    \global\@firstcolumntrue
+    \setbox\@outputbox \vbox to \textwidth{%
+      \hbox to \textheight{%
+        \box\@outputbox}%
+      \vfil}%
+  \fi
+  \@combinedblfloats
+  \@outputpage
+  \begingroup
+    \@dblfloatplacement
+    \@startdblcolumn
+    \@whilesw\if@fcolmade \fi
+      {\@outputpage\@startdblcolumn}%
+  \endgroup}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% 
+% 
+% 
+% \subsection{Punchmarks}
+% \begin{macro}{\af@circle}
+% \changes{v0.2}{2005/01/14}{Wrapped \cs{circle} into a 0pt box to avoid
+%   weird spacing effects}
+% \changes{v0.3}{2005/01/20}{Added a missing \cs{hidewidth} before
+%   \cs{circle}}
+% We use circles to make punchmarks. When making circles, \TeX~will put the
+% center of the circle at point, but consume horizontal space equal to the
+% full diameter of the circle. To compensate, we need to skip forward by
+% radius, and back again after laying each circle.
+%    \begin{macrocode}
+\def\af@circle{%
+  \hbox{%
+    \hskip\af@halfpunchwidth
+    \ifnum\af@jawspread>0
+      \hskip-\af@halfjawspread
+      \hskip-\af@jawline
+      \vrule depth \af@halfpunchwidth
+             height \af@halfpunchwidth
+             width \af@jawline
+      \hskip\af@halfjawspread
+    \else
+      \vrule depth \af@halfpunchwidth
+             height \af@halfpunchwidth
+             width 0pt
+    \fi
+    \hbox to 0pt{\hidewidth\circle{\af@punchsize}\hidewidth}%
+    \ifnum\af@jawspread>0
+      \hskip\af@halfjawspread
+      \vrule depth \af@halfpunchwidth
+             height \af@halfpunchwidth
+             width \af@jawline
+      \hskip-\af@halfjawspread
+      \hskip-\af@jawline
+    \fi
+    \hskip-\af@halfpunchwidth}}
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\af@group}
+% \changes{v0.2}{2005/01/14}{Added a final skip to reflect changes in
+%   \cs{af@circle}}
+% \changes{v0.3}{2005/01/20}{Removed the final skip (to reflect changes in
+%   \cs{af@circle}) which interfered with punchgroups interspace}
+% We define a looping command that lays down a cluster of circles. Grouping
+% allows this loop to be nested in another.
+%    \begin{macrocode}
+\def\af@group{%
+  \begingroup
+    \af@tempcount=0
+    \af@circle
+    \loop
+      \advance\af@tempcount by 1
+      \ifnum\af@tempcount<\af@punchcluster
+        \hskip\af@intraspace
+        \af@circle
+    \repeat
+  \endgroup}
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\af@circles}
+% We define a command that lays down a set of clusters (groups).
+%    \begin{macrocode}
+\def\af@circles{%
+  \af@tempcount=0
+  \af@group
+  \loop
+    \advance\af@tempcount by 1
+    \ifnum\af@tempcount<\af@punchgroups
+      \hskip\af@interspace
+      \af@group
+  \repeat
+  \af@tempcount=0}
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\af@punches}
+% \changes{v0.2}{2005/01/14}{Added a control to skip everything if
+%   \opzione{punchgroups} is 0; removed a skip to reflect changes in
+%   \cs{af@circle} and \cs{af@circles}}
+% The following command creates a set of punchmarks.
+%    \begin{macrocode}
+\def\af@punches{%
+  \ifnum\af@punchgroups>0
+    \hbox to \af@textheight{%
+      \hfil\af@circles
+      \relax\hfil}%
+  \fi}
+%    \end{macrocode}
+% \end{macro}
+% 
+% 
+% 
+% \subsection{The frame}
+% The following creates a frame. The model was lifted from the
+% \pacchetto{geometry} package. The \cs{@@@innerframe} macro of the original
+% \pacchetto{autofilo} package has been splited into two new macros which
+% draw different frames on the left and right pages of the filofax.
+% 
+% \begin{macro}{\@@@innerframeleft}
+% The following macro is used to draw the frame on the left pages, so the
+% punchmarks are on the right side.
+%    \begin{macrocode}
+\def\@@@innerframeleft{%
+  \moveright-\af@topmargin%
+  \vbox to 0pt{%
+    \vskip\topmargin%
+    \vbox to 0pt{\hrule width\af@textheight\vss}%
+    \hbox to \af@textheight{\llap{\vrule height0.5\af@textwidth}%
+      \hfil\vrule height0.5\af@textwidth}%
+    \vbox to 0pt{\hrule width\af@textheight\vss}%
+    \vskip-\af@halftextwidth%
+    \vskip\af@grip%
+    \nointerlineskip\af@punches\nointerlineskip%
+    \vss}}%
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\@@@innerframeright}
+% The following macro is used to draw the frame on the right pages, so the
+% punchmarks are on the left side.
+%    \begin{macrocode}
+\def\@@@innerframeright{%
+  \moveright-\af@topmargin%
+  \vbox to 0pt{%
+    \vskip\topmargin%
+    \vbox to 0pt{\hrule width\af@textheight\vss}%
+    \hbox to \af@textheight{\llap{\vrule height0.5\af@textwidth}%
+      \hfil\vrule height0.5\af@textwidth}%
+    \vbox to 0pt{\hrule width\af@textheight\vss}%
+    \vskip-\af@punchwidth%
+    \vskip-\af@grip%
+    \nointerlineskip\af@punches\nointerlineskip%
+    \vss}}%
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\@outputpage}
+% A further modification of the output routine, this time to put the frame
+% in place. This, too, is lifted from \pacchetto{geometry}. It has been
+% modified only slightly, but we drop \LaTeX~2.09 support altogether.
+%    \begin{macrocode}
+\newif\if@latextwoe
+\@ifundefined{if@compatibility}{\@latextwoefalse}{\@latextwoetrue}%
+\if@latextwoe
+  \def\@outputpage{%
+    \begingroup % the \endgroup is put in by \aftergroup
+    \let\protect\noexpand
+    \@resetactivechars
+    \let\-\@dischyph
+    \let\'\@acci\let\`\@accii\let\=\@acciii
+    \let\\\@normalcr
+    \let\par\@@par
+    \shipout \vbox{%
+      \set@typeset@protect
+      \aftergroup \endgroup
+      \aftergroup \set@typeset@protect
+      \if@specialpage
+        \global\@specialpagefalse
+        \@nameuse{ps@\@specialstyle}%
+      \fi
+      \if@twoside
+        \ifodd\count\z@
+          \let\@thehead\@oddhead
+          \let\@thefoot\@oddfoot
+          \let\@themargin\oddsidemargin
+        \else
+          \let\@thehead\@evenhead
+          \let\@thefoot\@evenfoot
+          \let\@themargin\evensidemargin
+        \fi
+      \fi
+      \reset@font
+      \normalsize
+      \baselineskip\z@skip \lineskip\z@skip \lineskiplimit\z@
+      \@begindvi
+      \moveright\@themargin
+      \vtop{%
+        \ifodd\count\z@
+          \@@@innerframeright
+        \else
+          \@@@innerframeleft
+        \fi
+        \vskip\topmargin
+        \vskip\af@marginrel
+        \moveright\af@topmargin
+        \vbox{%
+          \setbox\@tempboxa \vbox to \headheight{%
+            \vfil
+            \color@hbox
+            \normalcolor
+            \hb@xt@\textwidth{%
+              \let\label\@gobble
+              \let\index\@gobble
+              \let\glossary\@gobble
+              \@thehead}%
+            \color@endbox}%
+          \dp\@tempboxa\z@
+          \box\@tempboxa
+          \vskip\headsep
+          \box\@outputbox
+          \baselineskip \footskip
+          \color@hbox
+          \normalcolor
+          \hb@xt@\textwidth{%
+            \let\label\@gobble
+            \let\index\@gobble
+            \let\glossary\@gobble
+            \@thefoot}%
+          \color@endbox}}}%
+    \global\@colht\textheight
+    \stepcounter{page}%
+    \let\firstmark\botmark
+  }%
+\else
+  \message{Sorry, evautofl.sty works only with LaTeX2e}
+\fi
+%    \end{macrocode}
+% \end{macro}
+% 
+% 
+% 
+% \subsection{\texttt{Autofilo}'s options}
+% Set some global parameters.
+%    \begin{macrocode}
+\headheight=0pt
+\headsep=0pt
+\footskip=0pt
+\marginparwidth=0pt
+\marginparsep=0pt
+\pagestyle{empty}
+\parindent=0pt
+\raggedbottom
+\columnseprule=0pt
+\raggedright
+%    \end{macrocode}
+% Some option definitions.
+%    \begin{macrocode}
+\define@key{opt}{pageheight}{%
+  \af@textheight=#1\relax}
+\define@key{opt}{pagewidth}{%
+  \af@halftextwidth=#1\relax}
+\define@key{opt}{columnsep}{%
+  \columnsep=#1\relax}
+\define@key{opt}{punchcluster}{%
+  \af@punchcluster=#1}
+\define@key{opt}{punchgroups}{%
+  \af@punchgroups=#1}
+\define@key{opt}{interspace}{%
+  \af@interspace=#1}
+\define@key{opt}{intraspace}{%
+  \af@intraspace=#1}
+\define@key{opt}{grip}{%
+  \af@grip=#1}
+\define@key{opt}{punchmargin}{%
+  \af@punchmargin=#1}
+\define@key{opt}{punchpoints}{%
+  \af@punchsize=#1}
+\define@key{opt}{topspace}{%
+  \af@topmargin=#1}
+\define@key{opt}{bottomspace}{%
+  \af@bottommargin=#1}
+\define@key{opt}{jawspread}{%
+  \af@jawspread=#1}
+\define@key{opt}{jawline}{%
+  \af@jawline=#1}
+%    \end{macrocode}
+% The default values for the options.
+%    \begin{macrocode}
+\af@textheight=172mm
+\af@halftextwidth=95mm
+\columnsep=14pt
+\af@punchcluster=3
+\af@punchgroups=2
+\af@interspace=51.25mm
+\af@intraspace=19.25mm
+\af@grip=5mm
+\af@punchmargin=2mm
+\af@punchsize=15
+\af@topmargin=2pt
+\af@bottommargin=0pt
+\af@jawline=0.4pt
+%    \end{macrocode}
+% 
+% 
+% 
+% \subsection{\texttt{Autofilo} environment}
+% \begin{macro}{\autofilo}
+% The remaining dimensions must be calculated inside the landscape
+% environment. We define that now.
+%    \begin{macrocode}
+\def\autofilo#1{%
+  \setkeys{opt}{#1}%
+  \af@textwidth=\paperwidth
+  \advance\af@textwidth by -\af@textheight
+  \divide\af@textwidth by 2
+  \oddsidemargin=-1in
+  \advance\oddsidemargin by \af@textwidth
+  \evensidemargin=-1in
+  \advance\evensidemargin by \af@textwidth
+  \af@textwidth=\paperheight
+  \advance\af@textwidth by -\af@halftextwidth
+  \divide\af@textwidth by 2
+  \topmargin=-1in
+  \advance\topmargin by \af@textwidth
+  \relax
+  \landscape
+  \af@halfjawspread=\af@jawspread
+  \divide\af@halfjawspread by 2
+  \af@punchwidth=\af@punchsize pt
+  \af@halfpunchwidth=\af@punchwidth
+  \divide\af@halfpunchwidth by 2
+  \textheight=\af@textheight
+  \advance\textheight by -\af@topmargin
+  \advance\textheight by -\af@bottommargin
+  \af@textwidth=\af@halftextwidth
+  \multiply\af@textwidth by 2
+  \textwidth=\af@textwidth
+  \advance\textwidth by -2\af@punchwidth
+  \advance\textwidth by -2\af@grip
+  \advance\textwidth by -2\af@punchmargin
+  \af@marginrel=\af@grip
+  \advance\af@marginrel by \af@punchmargin
+  \advance\af@marginrel by \af@punchwidth
+  \vsize=\textheight
+  \hsize=\textwidth
+  \@colroom=\vsize
+  \@colht=\vsize
+  \if@usequadruplecolumn
+    \quadruplecolumn
+  \else
+    \twocolumn
+  \fi}
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\af@punches}
+% The end of the environment is a simple thing.
+%    \begin{macrocode}
+\def\endautofilo{%
+  \endlandscape}
+%</style>
+%    \end{macrocode}
+% \end{macro}
+% 
+% 
+% 
+% \makeatletter
+% \c@IndexColumns=2
+% \c@GlossaryColumns=2
+% \makeatother
+% \Finale
+% \clearpage
+% \PrintIndex
+% \clearpage
+% \PrintChanges
+% 
+% 
+% 
+\endinput

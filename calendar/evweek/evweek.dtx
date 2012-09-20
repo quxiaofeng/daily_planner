@@ -1,0 +1,796 @@
+% \iffalse
+% 
+% evweek.dtx
+% Copyright 2003, 2005 Emanuele Vicentini
+% 
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either
+% version 1.3a of this license or (at your option) any
+% later version.
+% The latest version of the license is in
+%    http://www.latex-project.org/lppl.txt
+% 
+% Author: Emanuele Vicentini
+%         (emanuelevicentini at yahoo dot it)
+% 
+% This work has the LPPL maintenance status "author-maintained".
+% 
+% This work consists of the files: README, evweek.dtx, evweek.ins and
+% the derived files evweek.cls and evweekexample.tex
+% 
+% This product is based off weekly.dtx distributed in the LaTeX Calendar
+% Bundle, v. 3.1, copyright (C) 1996-1997 by Frank Bennet
+% 
+%<*driver>
+\documentclass[10pt, draft]{ltxdoc}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{evweek.dtx}
+\end{document}
+%</driver>
+% 
+%<*example>
+\documentclass{evweek}
+\begin{document}
+\begin{weekly}
+  {titletype=\mdseries, daynametype=\itshape, monthtype=\scshape}
+  {}
+  23 jan 2005
+\end{weekly}
+\end{document}
+%</example>
+% \fi
+% 
+% 
+% 
+% \CheckSum{594}
+% 
+% \CharacterTable
+%   {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%    Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%    Digits        \0\1\2\3\4\5\6\7\8\9
+%    Exclamation   \!     Double quote  \"     Hash (number) \#
+%    Dollar        \$     Percent       \%     Ampersand     \&
+%    Acute accent  \'     Left paren    \(     Right paren   \)
+%    Asterisk      \*     Plus          \+     Comma         \,
+%    Minus         \-     Point         \.     Solidus       \/
+%    Colon         \:     Semicolon     \;     Less than     \<
+%    Equals        \=     Greater than  \>     Question mark \?
+%    Commercial at \@     Left bracket  \[     Backslash     \\
+%    Right bracket \]     Circumflex    \^     Underscore    \_
+%    Grave accent  \`     Left brace    \{     Vertical bar  \|
+%    Right brace   \}     Tilde         \~}
+% 
+% \DoNotIndex{\addtolength, \advance, \AtBeginDocument}
+% \DoNotIndex{\badness, \baselineskip, \begin, \bfseries}
+% \DoNotIndex{\csname, \CurrentOption}
+% \DoNotIndex{\DeclareOption, \def, \define@key, \divide}
+% \DoNotIndex{\else, \end, \endcsname, \expandafter}
+% \DoNotIndex{\fi}
+% \DoNotIndex{\global}
+% \DoNotIndex{\hbox, \hfil, \hfill, \hrule}
+% \DoNotIndex{\ifcat, \IfFileExists, \ifnum, \input, \InputIfFileExists}
+% \DoNotIndex{\kern}
+% \DoNotIndex{\leaders, \leavevmode, \linewidth, \LoadClass, \loop}
+% \DoNotIndex{\message, \multicolsep}
+% \DoNotIndex{\NeedsTeXFormat, \newcount, \newif, \newlength, \newsavebox,
+%   \newskip, \normallineskip}
+% \DoNotIndex{\p@, \pagestyle, \par, \parbox, \parindent,
+%   \PassOptionsToClass, \ProcessOptions, \protected@edef, \ProvidesClass}
+% \DoNotIndex{\raggedright, \relax, \repeat, \RequirePackage}
+% \DoNotIndex{\sbox, \setlength, \small, \space}
+% \DoNotIndex{\textheight, \the}
+% \DoNotIndex{\usebox}
+% \DoNotIndex{\vbox, \vfill, \vskip}
+% \DoNotIndex{\z@}
+% 
+% \changes{v0.1}{2003/02/09}{First public release incorporating small
+%   bug-fixes and extensions}
+% \changes{v0.4}{2005/01/15}{Added a little, stupid example of use}
+% 
+% 
+% 
+% \def\fileversion{0.4}
+% \def\filedate{2005/01/23}
+% 
+% 
+% 
+% \newcommand*{\classe}[1]{\textsf{#1}}
+% \newcommand*{\nomefile}[1]{\texttt{#1}}
+% \newcommand*{\opzione}[1]{\texttt{#1}}
+% \newcommand*{\pacchetto}[1]{\textsf{#1}}
+% 
+% 
+% 
+% \title{User's Guide to the \classe{evweek} class\thanks{This file is
+% version number \fileversion; it was last revised on \filedate.}}
+% \author{Emanuele Vicentini\\(\texttt{emanuelevicentini at yahoo dot it})}
+% \date{\filedate}
+% 
+% 
+% 
+% \maketitle
+% \begin{abstract}
+%     This class, a simple spinn-off of the official \classe{weekly},
+%     incorporates small bug-fixes and some extensions. To use it you have
+%     to install the \LaTeX\ Calendar Bundle and, optionally, the
+%     \pacchetto{evautofl} package.
+% \end{abstract}
+% \tableofcontents
+% 
+% 
+% 
+% \section{Brief Introduction}
+% For the original documentation see the files \nomefile{calguide.tex} and
+% \nomefile{weekly.dtx} distributed in the \LaTeX\ Calendar Bundle.
+% 
+% This manual is typeset according to the conventions of the
+% \LaTeX~\textsc{docstrip} utility which enables the automatic extraction of
+% the \LaTeX~macro source files~\cite{GOOSSENS94}.
+% 
+% 
+% 
+% \section{The weekly calendar}
+% The \classe{evweek} class prints weekly calendars for use with a
+% Filofax\texttrademark\ or other personal planner. Pages are framed with
+% cut-lines, and punch-marks show where to cut holes at the edge of the
+% page. For each date, the style initially attempts to set the event and
+% date text as a single column. If the text overflows the box for that date,
+% the style will attempt to recover by resetting the text as two columns.
+% 
+% It has the following special features and limitations:
+% 
+% \begin{itemize}
+% \item The text of the calendar is always rotated, using the
+% 	\pacchetto{lscape} package from the \pacchetto{graphics} bundle. As
+% 	a result, calendars generated using this package can only be printed
+% 	using \texttt{pdflatex}, \texttt{dvips} or other
+% 	PostScript\texttrademark\ print drivers supported by the
+% 	\pacchetto{graphics} bundle.
+% \item If the \pacchetto{graphics} bundle has not been configured for your
+% 	system, you can specify the driver and other options for its use by
+% 	giving \LaTeX{} options to the class when it is loaded.
+% \item While the paper size can be specified using options like
+% 	\texttt{a4paper}, this will have no effect on the calendar size: it
+% 	is governed by calendar options only.
+% \item Documents created with this style should contain nothing other than
+% 	a calendar environment.
+% \end{itemize}
+% 
+% 
+% 
+% \subsection{Original Calendar Options}
+% The following formatting options are supported by the \texttt{weekly}
+% environment\footnote{All but the first one are provided by the
+% \pacchetto{autofilo} package (see the \LaTeX~Calendar Bundle) or the
+% \pacchetto{evautofl} package.}:
+% 
+% \begin{description}
+% \item[\opzione{firstday}] This is the starting day of the calendar,
+% 	expressed as an integer. Friday (the default) is 5.
+% \item[\opzione{punchcluster}] Most filofaxes have two or or more clusters
+% 	or groups of punches to hold the pages in place. This option sets
+% 	the number of punches in each cluster. The default is three.
+% \item[\opzione{intraspace}] This governs the space between punchouts within
+% 	a group. The default is 19.25mm.
+% \item[\opzione{punchgroups}] This option sets the number of groups of
+% 	punches. The default is two groups.
+% \item[\opzione{interspace}] This option sets the distance between the
+% 	groups of punches. The default is 51.25mm.
+% \item[\opzione{pageheight}] This fixes the height of a filofax page (not
+% 	the physical paper on which it is printed). The default is 172mm.
+% \item[\opzione{pagewidth}] This fixes the width of an individual page. The
+% 	physical printed area will be twice this figure. The default is
+% 	95mm, for a 190mm printed area.
+% \item[\opzione{grip}] This adjusts the distance from the edge of the page
+% 	to the outer edge of the punchouts. Default is 5mm.
+% \item[\opzione{punchmargin}] This adjusts the distance from the edge of the
+% 	text to the inner edge of the punchouts. Default is 2mm.
+% \item[\opzione{punchpoints}] Size, in points, of punchouts\footnote{Please,
+% 	note that the original documentation reads \opzione{punchsize} but
+% 	the option name is really \opzione{punchpoints}. Also, take care to
+% 	write no dimension specification after the number.}. Defaults to 15.
+% \item[\opzione{topspace}] Gap between top of filofax page and top of text
+% 	page.
+% \item[\opzione{bottomspace}] Gap between bottom of filofax page and bottom
+% 	of text page.
+% \item[\opzione{jawspread}] If set to a positive length, this places a set
+% 	of rules the width of the punchmarks on either side of each
+% 	punchhole, centered on its center and spread the distance specified.
+% 	This can be useful as a guide with some one-hole punches that are
+% 	designed to be used ``blind''.
+% \item[\opzione{jawline}] Sets the width of the lines used to make jawmarks.
+% 	Default value is \texttt{0.4~pt}.
+% \end{description}
+% 
+% 
+% 
+% \changes{v0.3}{2003/11/28}{Added three new calendar options to enable
+% 	printing of lines in every day's box}
+% \subsection{New Calendar Options}
+% The following new formatting options are supported by the \classe{weekly}
+% environment as provided by this class only:
+% 
+% \begin{description}
+% \item[\opzione{titletype}] This set the default typeface for the titlebox
+% 	of each entry; default is \cs{bfseries}.
+% \item[\opzione{daynumbertype}] This set the typeface for the day number,
+% 	allowing a finer control over the typesetting of each box; default
+% 	is empty.
+% \item[\opzione{daynametype}] This set the typeface for the day name,
+% 	allowing a finer control over the typesetting of each box; default
+% 	is empty.
+% \item[\opzione{monthtype}] This set the typeface for month name, allowing
+% 	a finer control over the typesetting of each box; default is empty.
+% \item[\opzione{yeartype}] This set the typeface for year number, allowing
+% 	a finer control over the typesetting of each box; default is empty.
+% \item[\opzione{intralineskip}] This set the distance between lines that
+% 	appears in every day's box; set it to negative values to disable
+% 	line printing; default is \texttt{-1~pt}.
+% \item[\opzione{bottomlineskip}] This set a small gap between the last line
+% 	that will eventually appear in every day's box and the bottom of
+% 	that same box; default is \texttt{0~pt}.
+% \item[\opzione{ruleheight}] This set the lines' height; default is
+% 	\texttt{0.1~pt}.
+% \end{description}
+% 
+% Each of these parameters can be set indipendently, but the
+% \opzione{titletype} option has an overall effect. For example:
+% \begin{center}\ttfamily titletype=\cs{itshape},
+% monthtype=\cs{bfseries}\end{center} will typeset the whole titlebox with
+% an italic shape font and \emph{only} the month name using a bold expanded,
+% italic font (if available).
+% 
+% 
+% 
+% \subsection{Fixes}
+% I should not call them \emph{real} bug-fixes, but I have changed some bits
+% of code that handle the layout of the titlebox of each day.
+% 
+% The original implementation just put the titlebox's elements in a \TeX~box
+% and then built a little sandwich with two \cs{hrule}; this has the
+% unpleaseant effect that the titleboxes can be of different height, so I've
+% put the titleboxes in a \cs{vbox} of \cs{baselineskip} height.
+% 
+% 
+% 
+% \changes{v0.2}{2003/03/21}{Switched to \pacchetto{evautofl} package by
+%   default; provided an option to keep using \pacchetto{autofilo}}
+% \changes{v0.4}{2005/01/15}{Added a control on \pacchetto{evautofl}
+%   availability}
+% \changes{v0.4}{2005/01/15}{Added the \opzione{compact} option}
+% \changes{v0.4}{2005/01/23}{Added the \opzione{ferial} option}
+% \subsection{New Class Options}
+% \begin{description}
+% \item[\opzione{traditional}] The \classe{evweek} class needs
+% 	\pacchetto{autofilo} or \pacchetto{evautofl} package to draw the
+% 	page frame; the default behaviour is to use \pacchetto{evautofl} but
+% 	if the \texttt{traditional} option is passed to \classe{evweek} or
+% 	\pacchetto{evautofl} is not available, then it will revert to use
+% 	the old \pacchetto{autofilo} package.
+% \item[\opzione{compact}] With this option, \classe{evweek} puts a whole
+% 	week on a single framed page, without any empty scratching box,
+% 	starting from Monday (starting day can be customized using
+% 	\opzione{firstday}); the original input for this option came from
+% 	 Luis Rivera.
+% \item[\opzione{ferial}] With this option, \classe{evweek} puts Monday to
+% 	Wednesday on the left hand pages and Thurday to Sunday on the right
+% 	hand ones, with Saturday and Sunday taking half the space of the
+% 	other days and no empty scratching box\footnote{Customization of
+% 	starting day via \opzione{firstday} is not taken into account.}; the
+% 	original request for this option came from Geert Kloosterman.
+% \end{description}
+% 
+% 
+% 
+% \StopEventually{%
+%   \bibliographystyle{alpha}
+%   \begin{thebibliography}{GMS94}
+%   \addcontentsline{toc}{section}{\refname}
+%   \bibitem[GMS94]{GOOSSENS94} Michel Goossens, Frank Mittelbach and
+%   	Alexander Samarin. \emph{The \LaTeX\ Companion}. Addison-Wesley
+%   	Company, 1994.
+%   \end{thebibliography}}
+% 
+% 
+% 
+% \section{The Class File}
+% 
+% 
+% 
+% \subsection{Preliminaries}
+% Use \LaTeXe, and tell the user who we are.
+%    \begin{macrocode}
+%<*class>
+\NeedsTeXFormat{LaTeX2e}[1995/06/01]
+\ProvidesClass{evweek}[2005/01/23 v0.4 evWeekly Calendar]
+%    \end{macrocode}
+% Define some more variables and switches for use in the body of the style.
+%    \begin{macrocode}
+\newif\ifwk@overthetop
+\newcount\wk@firstday
+\newcount\wk@tempcount
+\newlength\wk@itemheight
+\newif\ifwk@traditional
+\newif\ifwk@compact
+\newif\ifwk@ferial
+\newskip\wk@intralineskip
+\newskip\wk@bottomlineskip
+\newlength\wk@ruleheight
+%    \end{macrocode}
+% 
+% 
+% 
+% \subsection{Options}
+% Things like page and type size go to the article class.
+%    \begin{macrocode}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{traditional}{\wk@traditionaltrue}
+\DeclareOption{compact}{\wk@compacttrue\wk@ferialfalse}
+\DeclareOption{ferial}{\wk@ferialtrue\wk@compactfalse}
+%    \end{macrocode}
+% We use the generic language options, the same as other parts of the
+% system.
+%    \begin{macrocode}
+\input{calopts.cfg}
+\InputIfFileExists{dates.cfg}{}{}
+\ProcessOptions
+%    \end{macrocode}
+% 
+% 
+% 
+% \subsection{Option Postprocessing}
+% Now that the options lists are available to us, we can start loading
+% packages. The following packages are always loaded.
+%    \begin{macrocode}
+\LoadClass{article}
+\RequirePackage{calendar}
+\RequirePackage{lscape}
+\RequirePackage{multicol}
+%    \end{macrocode}
+% If \pacchetto{evautofl} is not available, we simulate the effect of
+% \opzione{traditional} to keep going.
+%    \begin{macrocode}
+\IfFileExists{evautofl.sty}{\relax}{\wk@traditionaltrue}
+\ifwk@traditional
+  \RequirePackage{autofilo}
+\else
+  \RequirePackage{evautofl}
+\fi
+%    \end{macrocode}
+% It is now time to do the final page formatting.
+%    \begin{macrocode}
+\AtBeginDocument{%
+%    \end{macrocode}
+% Eliminate page numbers and indenting.
+%    \begin{macrocode}
+  \pagestyle{empty}
+  \parindent=0pt
+  \multicolsep=0pt}
+%    \end{macrocode}
+% 
+% 
+% 
+% \subsection{Calendar Setup}
+% Define some key and their default values for use by the calendar
+% environment.
+%    \begin{macrocode}
+\define@key{opt}{firstday}{%
+  \wk@firstday=#1}
+\ifwk@compact
+  \wk@firstday=1
+\else\ifwk@ferial
+  \wk@firstday=4
+\else
+  \wk@firstday=5
+\fi\fi
+\define@key{opt}{titletype}{%
+  \def\wk@titletype{#1}}
+\def\wk@titletype{\bfseries}
+\define@key{opt}{daynumbertype}{%
+  \def\wk@daynumbertype{#1}}
+\def\wk@daynumbertype{}
+\define@key{opt}{daynametype}{%
+  \def\wk@daynametype{#1}}
+\def\wk@daynametype{}
+\define@key{opt}{monthtype}{%
+  \def\wk@monthtype{#1}}
+\def\wk@monthtype{}
+\define@key{opt}{yeartype}{%
+  \def\wk@yeartype{#1}}
+\def\wk@yeartype{}
+\define@key{opt}{intralineskip}{%
+  \wk@intralineskip=#1}
+\wk@intralineskip=-\p@
+\define@key{opt}{bottomlineskip}{%
+  \wk@bottomlineskip=#1}
+\wk@bottomlineskip=\z@
+\define@key{opt}{ruleheight}{%
+  \wk@ruleheight=#1}
+\wk@ruleheight=0.1pt
+%    \end{macrocode}
+% Internal re-definition of \cs{hrulefill} with variable height.
+%    \begin{macrocode}
+\def\wk@hrulefill{\leavevmode\leaders\hrule height\wk@ruleheight
+  \hfill\kern\z@}
+%    \end{macrocode}
+% We declare eight boxes (or just seven if \opzione{compact} or
+% \opzione{ferial} options are in place), one for each day of the week plus
+% an extra.
+%    \begin{macrocode}
+\wk@tempcount=0
+\expandafter\newsavebox\csname wk@box\the\wk@tempcount\endcsname
+\ifwk@compact
+  \loop
+    \advance\wk@tempcount by 1
+    \ifnum\wk@tempcount<7
+      \expandafter\newsavebox\csname wk@box\the\wk@tempcount\endcsname
+  \repeat
+\else\ifwk@ferial
+  \loop
+    \advance\wk@tempcount by 1
+    \ifnum\wk@tempcount<7
+      \expandafter\newsavebox\csname wk@box\the\wk@tempcount\endcsname
+  \repeat
+\else
+  \loop
+    \advance\wk@tempcount by 1
+    \ifnum\wk@tempcount<8
+      \expandafter\newsavebox\csname wk@box\the\wk@tempcount\endcsname
+  \repeat
+\fi\fi
+%    \end{macrocode}
+% We need a macro to lay the boxes out on a page. We define this now, with
+% parameterized measurements that will be determined by the settings given
+% to the environment within which this expands.
+%    \begin{macrocode}
+\def\wk@spitoutboxes{%
+  \wk@tempcount=-1
+  \ifwk@compact
+    \loop
+      \advance\wk@tempcount by 1
+      \ifnum\wk@tempcount<7
+        \hbox to\linewidth{%
+          \expandafter\usebox\csname wk@box\the\wk@tempcount\endcsname}%
+    \repeat
+  \else\ifwk@ferial
+    \loop
+      \advance\wk@tempcount by 1
+      \ifnum\wk@tempcount<7
+        \hbox to\linewidth{%
+          \expandafter\usebox\csname wk@box\the\wk@tempcount\endcsname}%
+    \repeat
+  \else
+    \loop
+      \advance\wk@tempcount by 1
+      \ifnum\wk@tempcount<3
+        \hbox to\linewidth{%
+          \expandafter\usebox\csname wk@box\the\wk@tempcount\endcsname}%
+    \repeat
+    \hbox to\linewidth{%
+      \vbox to\wk@itemheight{%
+        \hrule width\linewidth height0.4pt depth0pt
+        \hbox to\linewidth{\hfil}%
+        \vfill}}%
+    \wk@tempcount=2
+    \loop
+      \advance\wk@tempcount by 1
+      \ifnum\wk@tempcount<7
+        \hbox to\linewidth{%
+          \expandafter\usebox\csname wk@box\the\wk@tempcount\endcsname}%
+    \repeat
+  \fi\fi}
+%    \end{macrocode}
+% We define a macro that calculates the height of the date boxes. The value
+% of \cs{normallineskip} sneaks in between stacked \cs{hbox}es, so we need
+% to account for that.
+%    \begin{macrocode}
+\def\wk@getitemheight{%
+  \setlength{\wk@itemheight}{\textheight}
+  \addtolength{\wk@itemheight}{-4pt}
+  \addtolength{\wk@itemheight}{-5\normallineskip}
+  \ifwk@compact
+    \divide\wk@itemheight by 7
+  \else\ifwk@ferial
+    \divide\wk@itemheight by 3
+  \else
+    \divide\wk@itemheight by 4
+  \fi\fi}%
+%    \end{macrocode}
+% 
+% 
+% 
+% \subsection{Calendar Definition}
+% The calendar definition itself consists of a single command and its
+% associated arguments.
+%    \begin{macrocode}
+\newcalendar%
+%    \end{macrocode}
+% We give the environment a name.
+%    \begin{macrocode}
+  {weekly}
+%    \end{macrocode}
+% We are producing DVI, so we use the standard macro for dropping text into
+% the hopper.
+%    \begin{macrocode}
+  {\cal@insert}
+%    \end{macrocode}
+% Starting day for the calendar is not fixed here, because we do not pad
+% with blank entries. Season to taste. Use integers 0 through 6. A value
+% over 7 means no padding.
+%    \begin{macrocode}
+  {8}
+%    \end{macrocode}
+% The length of a group is one week.
+%    \begin{macrocode}
+  {7}
+%    \end{macrocode}
+% The length of a subgroup is one week.
+%    \begin{macrocode}
+  {7}
+%    \end{macrocode}
+% We do not need delimiters between output items, since we're just building
+% boxes.
+%    \begin{macrocode}
+  {\relax}
+%    \end{macrocode}
+% Increment the date counter with every item.
+%    \begin{macrocode}
+  {I}
+%    \end{macrocode}
+% Define the header.
+%    \begin{macrocode}
+  {\expandafter\autofilo\expandafter{\cal@optionslist}\wk@getitemheight}
+%    \end{macrocode}
+% We define the end of the calendar. This spits out all of the boxes one
+% last time and closes the page formatting environment.
+%    \begin{macrocode}
+  {\wk@spitoutboxes\endautofilo}
+%    \end{macrocode}
+% We define the way to open a new group. This spits out all of the boxes
+% built for a page of text.
+%    \begin{macrocode}
+  {\wk@spitoutboxes}
+%    \end{macrocode}
+% We define a way to end a subgroup. In this case, we just relax.
+%    \begin{macrocode}
+  {\relax}
+%    \end{macrocode}
+% We set up to require a month and day in the environment typed into the
+% user's document.
+%    \begin{macrocode}
+  {\dates@requiremonthtrue\dates@requiredaytrue}
+%    \end{macrocode}
+% The next section runs after the calendar dates have been scanned from the
+% environment, but before the table is opened.
+% 
+% We step back, if necessary, from the designated first date to reach the
+% starting day for pages. (Default is Friday.)
+%    \begin{macrocode}
+  {\global\dates@date=\cal@range@start
+   \prevday\wk@firstday
+   \cal@range@start=\dates@date
+   \caldate
+%    \end{macrocode}
+% We tell the user where we are starting.
+%    \begin{macrocode}
+   \message{^^JStart: \theshortweekday\space
+     \theday\space\theshortmonth\space\theyear}%
+%    \end{macrocode}
+% Then we jump forward, again if necessary, to the next day just before the
+% starting day of the week.
+%    \begin{macrocode}
+   \global\dates@date=\cal@range@end
+   \caldate
+   \advance\wk@firstday by -1
+   \ifnum\wk@firstday=7
+     \wk@firstday=0
+   \fi
+   \nextday\wk@firstday
+   \caldate
+   \cal@range@end=\dates@date
+%    \end{macrocode}
+% We let the user know where we plan to stop.
+%    \begin{macrocode}
+   \message{^^JEnd: \theshortweekday\space
+     \theday\space\theshortmonth\space\theyear^^J}%
+%    \end{macrocode}
+% We jump back to the starting date and reset the human-side values.
+%    \begin{macrocode}
+   \global\dates@date=\cal@range@start
+   \caldate}
+%    \end{macrocode}
+% Events are delimited by \cs{par}.
+%    \begin{macrocode}
+  {\par}
+%    \end{macrocode}
+% The next argument is dropped on DVI for each item. We use it here to fetch
+% the text of appointments and events to the standard list macros, using the
+% standard text-fetching commands. Each generates a stack delimited by the
+% phrase that was set above.
+%    \begin{macrocode}
+  {\cal@get@appointments\cal@get@events}
+%    \end{macrocode}
+% This sets \cs{cal@entry@text}. It is executed for every event or
+% appointment in the database that applies to a given item. We differentiate
+% between whole-day events, pinpointed events and ranged events.
+%    \begin{macrocode}
+  {\ifnum\dates@time@start>0
+     \ifnum\dates@time@start=\dates@time@end
+       \protected@edef\cal@entry@text{%
+         \thetimestart\space
+         \cal@textcolor{\calcolor}{\theshorttext}}
+     \else
+       \protected@edef\cal@entry@text{%
+         \thetimestart--\thetimeend\space
+         \cal@textcolor{\calcolor}{\theshorttext}}
+     \fi
+   \else
+     \protected@edef\cal@entry@text{%
+       \cal@textcolor{\calcolor}{\theshorttext}}
+   \fi}
+%    \end{macrocode}
+% Finally we tell the style how to create the text for each item. We stash
+% the text in each of the numbered boxes, for extraction at the end of each
+% group and at the end of the run. In the event of an overfull \cs{vbox}, we
+% retry with two columns of text in a last-ditch attempt to squeze
+% everything in.
+%    \begin{macrocode}
+  {\global\wk@overthetopfalse
+   \ifwk@ferial
+     \ifcase\cal@subgroup@count
+       \def\wk@itemheight@scalefactor{1}%
+     \or
+       \def\wk@itemheight@scalefactor{1}%
+     \or
+       \def\wk@itemheight@scalefactor{0.5}%
+     \or
+       \def\wk@itemheight@scalefactor{0.5}%
+     \else
+       \def\wk@itemheight@scalefactor{1}%
+     \fi
+   \else
+     \def\wk@itemheight@scalefactor{1}%
+   \fi
+   \expandafter\sbox\csname wk@box\the\cal@subgroup@count\endcsname{%
+     \vbox to\wk@itemheight@scalefactor\wk@itemheight{%
+       \hbox{%
+         \parbox{\linewidth}{%
+           \vbox to\baselineskip{%
+             \hrule width\linewidth
+             \vskip 1pt
+             \ifwk@compact
+               {\wk@titletype{\wk@daynametype\theweekday}\hfill
+                {\wk@daynumbertype\theday}\space
+                {\wk@monthtype\themonth}\space
+                {\wk@yeartype\theyear}%
+               }\par
+             \else\ifwk@ferial
+               \ifnum\cal@subgroup@count<4
+                 {\wk@titletype{\wk@daynametype\theweekday}\hfill
+                  {\wk@daynumbertype\theday}\space
+                  {\wk@monthtype\themonth}\space
+                  {\wk@yeartype\theyear}%
+                 }\par
+               \else
+                 {\wk@titletype{\wk@daynumbertype\theday}\space
+                  {\wk@monthtype\themonth}\space
+                  {\wk@yeartype\theyear}\hfill
+                  {\wk@daynametype\theweekday}%
+                 }\par
+               \fi
+             \else
+               \ifnum\cal@subgroup@count<3
+                 {\wk@titletype{\wk@daynametype\theweekday}\hfill
+                  {\wk@daynumbertype\theday}\space
+                  {\wk@monthtype\themonth}\space
+                  {\wk@yeartype\theyear}%
+                 }\par
+               \else
+                 {\wk@titletype{\wk@daynumbertype\theday}\space
+                  {\wk@monthtype\themonth}\space
+                  {\wk@yeartype\theyear}\hfill
+                  {\wk@daynametype\theweekday}%
+                 }\par
+               \fi
+             \fi\fi
+             \vfill
+           }%          vbox
+           \hrule width\linewidth
+           \vskip 1pt
+           \raggedright
+           \small
+           \ifcat$\theevents$%
+           \else
+             \theevents\par
+           \fi
+           \ifcat$\theappointments$%
+           \else
+             \theappointments
+           \fi
+         }%            parbox
+       }%              hbox
+       \leaders\vbox{\vskip\wk@intralineskip\wk@hrulefill}\vfill
+       \vskip\wk@bottomlineskip
+     }%                vbox
+     \ifnum\badness=1000000
+       \global\wk@overthetoptrue
+     \fi
+   }%                  sbox
+   \ifwk@overthetop
+     \message{Resetting this date in two-columns.}%
+     \expandafter\sbox\csname wk@box\the\cal@subgroup@count\endcsname{%
+       \vbox to\wk@itemheight@scalefactor\wk@itemheight{%
+         \hbox{%
+           \parbox{\linewidth}{%
+             \vbox to\baselineskip{%
+               \hrule width\linewidth
+               \vskip 1pt
+               \ifwk@compact
+                 {\wk@titletype{\wk@daynametype\theweekday}\hfill
+                  {\wk@daynumbertype\theday}\space
+                  {\wk@monthtype\themonth}\space
+                  {\wk@yeartype\theyear}%
+                 }\par
+               \else
+                 \ifnum\cal@subgroup@count<3
+                   {\wk@titletype{\wk@daynametype\theweekday}\hfill
+                    {\wk@daynumbertype\theday}\space
+                    {\wk@monthtype\themonth}\space
+                    {\wk@yeartype\theyear}%
+                   }\par
+                 \else
+                   {\wk@titletype{\wk@daynumbertype\theday}\space
+                    {\wk@monthtype\themonth}\space
+                    {\wk@yeartype\theyear}\hfill
+                    {\wk@daynametype\theweekday}%
+                   }\par
+                 \fi
+               \fi
+               \vfill
+             }%        vbox
+             \hrule width\linewidth
+             \vskip 1pt
+             \raggedright
+             \small
+             \begin{multicols}{2}
+               \ifcat$\theevents$%
+               \else%
+                 \theevents\par
+               \fi
+               \ifcat$\theappointments$%
+               \else
+                 \theappointments
+               \fi
+             \end{multicols}
+           }%          parbox
+         }%            hbox
+         \leaders\vbox{\vskip\wk@intralineskip\wk@hrulefill}\vfill
+         \vskip\wk@bottomlineskip
+       }%              vbox
+     }%                sbox
+   \fi
+   \advance\wk@tempcount by 1
+   \ifnum\wk@tempcount>6
+     \wk@tempcount=0
+   \fi}
+%</class>
+%    \end{macrocode}
+% 
+% 
+% 
+% \makeatletter
+% \c@IndexColumns=2
+% \c@GlossaryColumns=2
+% \makeatother
+% \Finale
+% \clearpage
+% \PrintIndex
+% \clearpage
+% \PrintChanges
+% 
+% 
+% 
+\endinput

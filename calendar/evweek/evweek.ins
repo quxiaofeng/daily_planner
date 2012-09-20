@@ -1,0 +1,77 @@
+%%
+%% evweek.ins
+%% Copyright 2003, 2005 Emanuele Vicentini
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either
+%% version 1.3a of this license or (at your option) any
+%% later version.
+%% The latest version of the license is in
+%%    http://www.latex-project.org/lppl.txt
+%%
+%% Author: Emanuele Vicentini
+%%         (emanuelevicentini at yahoo dot it)
+%%
+%% This work has the LPPL maintenance status "author-maintained".
+%%
+%% This work consists of the files: README, evweek.dtx, evweek.ins and
+%% the derived files evweek.cls and evweekexample.tex
+%% 
+%% This file will generate fast loadable files and documentation
+%% driver files from the doc files in this package when run through
+%% LaTeX or TeX.
+%%
+%% --------------- start of docstrip commands ------------------
+%%
+\input docstrip
+\preamble
+
+ Copyright 2003, 2005 Emanuele Vicentini
+
+ This work may be distributed and/or modified under the
+ conditions of the LaTeX Project Public License, either
+ version 1.3a of this license or (at your option) any
+ later version.
+ The latest version of the license is in
+    http://www.latex-project.org/lppl.txt
+
+ Author: Emanuele Vicentini
+         (emanuelevicentini at yahoo dot it)
+
+ This work has the LPPL maintenance status "author-maintained".
+
+ This work consists of the files: README, evweek.dtx, evweek.ins
+ and the derived files evweek.cls and evweekexample.tex
+
+ Original author: Frank Bennett
+                  at fb@soas.ac.uk
+
+\endpreamble
+
+\keepsilent
+\askforoverwritefalse
+
+\Msg{*** Generating the package files ***}
+\generate{\file{evweek.cls}{\from{evweek.dtx}{class}}%
+          \nopostamble
+          \file{evweekexample.tex}{\from{evweek.dtx}{example}}}
+
+\Msg{***********************************************************}
+\Msg{*}
+\Msg{* To finish the installation you have to move the following}
+\Msg{* files into a directory searched by TeX:}
+\Msg{*}
+\Msg{* \space\space evweek.cls}
+\Msg{*}
+\Msg{*}
+\Msg{* To produce the documentation on evweek's code run the}
+\Msg{* file ending with `.dtx' through LaTeX.}
+\Msg{* Process the file evweek.idx by:}
+\Msg{* \space\space\space\space makeindex -s gind.ist evweek}
+\Msg{* Process the file certatex.glo by:}
+\Msg{* \space\space\space\space makeindex -s gglo.ist -o evweek.gls evweek.glo}
+\Msg{*}
+\Msg{* Happy TeXing}
+\Msg{***********************************************************}
+
+\endbatchfile

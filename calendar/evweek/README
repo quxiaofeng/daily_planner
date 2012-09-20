@@ -1,0 +1,62 @@
+evweek.cls
+==========
+
+This class, a simple spinn-off of the official weekly, incorporates small
+bug-fixes and some extensions. To use it you have to install the LaTeX
+Calendar Bundle and, optionally, the evautofl package.
+
+
+Changes in v0.4 (2005/01/23)
+o Added a little, stupid example of use.
+o Added a control on evautofl availability.
+o Added the compact option.
+o Added the ferial option.
+
+Changes in v0.3 (2003/11/28)
+o Added three new calendar options to enable printing of lines in every
+  day's box.
+
+Changes in v0.2 (2003/03/21)
+o Switched to evautofl package by default; provided an option to keep using
+  autofilo.
+
+Changes in v0.1 (2003/02/09)
+o First public release incorporating small bug-fixes and extensions.
+
+-------------------------------------------------------------------
+  Author: Emanuele Vicentini
+          (emanuelevicentini at yahoo dot it)
+
+  Copyright 2003, 2005 Emanuele Vicentini
+
+  This work may be distributed and/or modified under the
+  conditions of the LaTeX Project Public License, either
+  version 1.3a of this license or (at your option) any
+  later version.
+  The latest version of the license is in
+     http://www.latex-project.org/lppl.txt
+
+  This work has the LPPL maintenance status "author-maintained".
+
+  This work consists of the files: README, evweek.dtx, evweek.ins
+  and the derived files evweek.cls and evweekexample.tex
+-------------------------------------------------------------------
+
+
+    The distribution consists of the following files:
+README             (this file)
+evweek.{dtx,ins}   Class source and installation files
+evweek.pdf         Documentation in PDF
+evweekexample.pdf  Example of this class output in PDF
+
+
+    To install the class:
+o run: latex evweek.ins (which will generate evweek.cls and
+                         evweekexample.tex)
+o move evweek.cls where LaTeX will find it (in a local texmf tree could
+  be tex/latex/calendar/contrib/) and refresh the file database.
+
+
+2005/01/23
+Emanuele Vicentini
+(emanuelevicentini at yahoo dot it)

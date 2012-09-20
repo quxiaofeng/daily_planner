@@ -1,0 +1,419 @@
+%%
+%% This is file `evautofl.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% evautofl.dtx  (with options: `style')
+%% 
+%%  Copyright 2003, 2005 Emanuele Vicentini
+%% 
+%%  This work may be distributed and/or modified under the
+%%  conditions of the LaTeX Project Public License, either
+%%  version 1.3a of this license or (at your option) any
+%%  later version.
+%%  The latest version of the license is in
+%%     http://www.latex-project.org/lppl.txt
+%% 
+%%  Author: Emanuele Vicentini
+%%          (emanuelevicentini at yahoo dot it)
+%% 
+%%  This work has the LPPL maintenance status "author-maintained".
+%% 
+%%  This work consists of the files: README, evautofl.dtx, evautofl.ins
+%%  and the derived files evautofl.sty and evautoflexample.tex
+%% 
+%%  Original author: Frank Bennett
+%%                   at fb@soas.ac.uk
+%% 
+\NeedsTeXFormat{LaTeX2e}[1995/06/01]
+\ProvidesPackage{evautofl}[2005/01/20 v0.3 Filofax page outlines]
+\newif\if@usequadruplecolumn
+\DeclareOption{fourcolumn}{\@usequadruplecolumntrue}
+\ProcessOptions
+\RequirePackage{lscape}
+\RequirePackage{keyval}
+\newif\if@quadruplecolumn
+\newbox\@leftleftcolumn
+\newbox\@leftrightcolumn
+\newbox\@rightleftcolumn
+\newbox\@rightrightcolumn
+\newcount\af@punchcluster
+\newcount\af@punchgroups
+\newlength\af@interspace
+\newlength\af@intraspace
+\newlength\af@grip
+\newlength\af@punchmargin
+\newcount\af@punchsize
+\newlength\af@punchwidth
+\newlength\af@halfpunchwidth
+\newcount\af@subtempcount
+\newcount\af@tempcount
+\newlength\af@textwidth
+\newlength\af@marginrel
+\newlength\af@halftextwidth
+\newlength\af@textheight
+\newlength\af@topmargin
+\newlength\af@bottommargin
+\newcount\col@no
+\newlength\af@jawspread
+\newlength\af@halfjawspread
+\newlength\af@jawline
+\def\quadruplecolumn{%
+  \clearpage
+  \global\columnwidth\textwidth
+  \global\advance\columnwidth-3\columnsep
+  \global\divide\columnwidth by4\relax
+  \global\hsize\columnwidth
+  \global\linewidth\columnwidth
+  \global\@twocolumntrue
+  \global\@quadruplecolumntrue
+  \global\@firstcolumntrue
+  \col@number=4\relax}
+\def\@opcol{%
+  \if@twocolumn
+    \if@quadruplecolumn
+      \@outputqdrplcol
+    \else
+      \@outputdblcol
+    \fi
+  \else
+    \@outputpage
+  \fi
+  \global \@mparbottom \z@ \global \@textfloatsheight \z@
+  \@floatplacement}
+\def\@outputqdrplcol{%
+  \ifcase\col@no
+    \global\@firstcolumnfalse
+    \global\setbox\@leftleftcolumn \box\@outputbox
+  \or
+    \global\setbox\@leftrightcolumn \box\@outputbox
+    \setbox\@outputbox \vbox to \textwidth{%
+      \vss
+      \hb@xt@ \textheight{%
+        \vrule height \columnwidth
+               depth 0pt
+               width 0pt
+        \box\@leftrightcolumn
+        \hss}%
+      \vskip\columnsep
+      \hb@xt@ \textheight{%
+        \vrule height \columnwidth
+               depth 0pt
+               width 0pt
+        \box\@leftleftcolumn
+        \hss}%
+      \vskip\af@halftextwidth}%
+    \@combinedblfloats
+    \@outputpage
+    \begingroup
+      \@dblfloatplacement
+      \@startdblcolumn
+      \@whilesw\if@fcolmade \fi
+        {\@outputpage\@startdblcolumn}%
+    \endgroup
+  \or
+    \global\setbox\@rightleftcolumn \box\@outputbox
+  \or
+    \global\@firstcolumntrue
+    \global\setbox\@rightrightcolumn \box\@outputbox
+    \setbox\@outputbox \vbox to \textwidth{%
+      \hb@xt@ \textheight{%
+        \vrule height \columnwidth
+               depth 0pt
+               width 0pt
+        \box\@rightrightcolumn
+        \hss}%
+      \vskip\columnsep
+      \hb@xt@ \textheight{%
+        \vrule height \columnwidth
+               depth 0pt
+               width 0pt
+        \box\@rightleftcolumn
+        \hss}%
+      \vfil}%
+    \@combinedblfloats
+    \@outputpage
+    \begingroup
+      \@dblfloatplacement
+      \@startdblcolumn
+      \@whilesw\if@fcolmade \fi
+        {\@outputpage\@startdblcolumn}%
+    \endgroup
+  \fi
+  \global\advance\col@no by 1
+  \ifnum\col@no=4
+    \global\col@no=0
+  \fi}
+\def\@outputdblcol{%
+  \if@firstcolumn
+    \global\@firstcolumnfalse
+    \setbox\@outputbox \vbox to \textwidth{%
+      \vss
+      \hbox to \textheight{%
+        \box\@outputbox}%
+      \vskip\af@halftextwidth}%
+  \else
+    \global\@firstcolumntrue
+    \setbox\@outputbox \vbox to \textwidth{%
+      \hbox to \textheight{%
+        \box\@outputbox}%
+      \vfil}%
+  \fi
+  \@combinedblfloats
+  \@outputpage
+  \begingroup
+    \@dblfloatplacement
+    \@startdblcolumn
+    \@whilesw\if@fcolmade \fi
+      {\@outputpage\@startdblcolumn}%
+  \endgroup}
+\def\af@circle{%
+  \hbox{%
+    \hskip\af@halfpunchwidth
+    \ifnum\af@jawspread>0
+      \hskip-\af@halfjawspread
+      \hskip-\af@jawline
+      \vrule depth \af@halfpunchwidth
+             height \af@halfpunchwidth
+             width \af@jawline
+      \hskip\af@halfjawspread
+    \else
+      \vrule depth \af@halfpunchwidth
+             height \af@halfpunchwidth
+             width 0pt
+    \fi
+    \hbox to 0pt{\hidewidth\circle{\af@punchsize}\hidewidth}%
+    \ifnum\af@jawspread>0
+      \hskip\af@halfjawspread
+      \vrule depth \af@halfpunchwidth
+             height \af@halfpunchwidth
+             width \af@jawline
+      \hskip-\af@halfjawspread
+      \hskip-\af@jawline
+    \fi
+    \hskip-\af@halfpunchwidth}}
+\def\af@group{%
+  \begingroup
+    \af@tempcount=0
+    \af@circle
+    \loop
+      \advance\af@tempcount by 1
+      \ifnum\af@tempcount<\af@punchcluster
+        \hskip\af@intraspace
+        \af@circle
+    \repeat
+  \endgroup}
+\def\af@circles{%
+  \af@tempcount=0
+  \af@group
+  \loop
+    \advance\af@tempcount by 1
+    \ifnum\af@tempcount<\af@punchgroups
+      \hskip\af@interspace
+      \af@group
+  \repeat
+  \af@tempcount=0}
+\def\af@punches{%
+  \ifnum\af@punchgroups>0
+    \hbox to \af@textheight{%
+      \hfil\af@circles
+      \relax\hfil}%
+  \fi}
+\def\@@@innerframeleft{%
+  \moveright-\af@topmargin%
+  \vbox to 0pt{%
+    \vskip\topmargin%
+    \vbox to 0pt{\hrule width\af@textheight\vss}%
+    \hbox to \af@textheight{\llap{\vrule height0.5\af@textwidth}%
+      \hfil\vrule height0.5\af@textwidth}%
+    \vbox to 0pt{\hrule width\af@textheight\vss}%
+    \vskip-\af@halftextwidth%
+    \vskip\af@grip%
+    \nointerlineskip\af@punches\nointerlineskip%
+    \vss}}%
+\def\@@@innerframeright{%
+  \moveright-\af@topmargin%
+  \vbox to 0pt{%
+    \vskip\topmargin%
+    \vbox to 0pt{\hrule width\af@textheight\vss}%
+    \hbox to \af@textheight{\llap{\vrule height0.5\af@textwidth}%
+      \hfil\vrule height0.5\af@textwidth}%
+    \vbox to 0pt{\hrule width\af@textheight\vss}%
+    \vskip-\af@punchwidth%
+    \vskip-\af@grip%
+    \nointerlineskip\af@punches\nointerlineskip%
+    \vss}}%
+\newif\if@latextwoe
+\@ifundefined{if@compatibility}{\@latextwoefalse}{\@latextwoetrue}%
+\if@latextwoe
+  \def\@outputpage{%
+    \begingroup % the \endgroup is put in by \aftergroup
+    \let\protect\noexpand
+    \@resetactivechars
+    \let\-\@dischyph
+    \let\'\@acci\let\`\@accii\let\=\@acciii
+    \let\\\@normalcr
+    \let\par\@@par
+    \shipout \vbox{%
+      \set@typeset@protect
+      \aftergroup \endgroup
+      \aftergroup \set@typeset@protect
+      \if@specialpage
+        \global\@specialpagefalse
+        \@nameuse{ps@\@specialstyle}%
+      \fi
+      \if@twoside
+        \ifodd\count\z@
+          \let\@thehead\@oddhead
+          \let\@thefoot\@oddfoot
+          \let\@themargin\oddsidemargin
+        \else
+          \let\@thehead\@evenhead
+          \let\@thefoot\@evenfoot
+          \let\@themargin\evensidemargin
+        \fi
+      \fi
+      \reset@font
+      \normalsize
+      \baselineskip\z@skip \lineskip\z@skip \lineskiplimit\z@
+      \@begindvi
+      \moveright\@themargin
+      \vtop{%
+        \ifodd\count\z@
+          \@@@innerframeright
+        \else
+          \@@@innerframeleft
+        \fi
+        \vskip\topmargin
+        \vskip\af@marginrel
+        \moveright\af@topmargin
+        \vbox{%
+          \setbox\@tempboxa \vbox to \headheight{%
+            \vfil
+            \color@hbox
+            \normalcolor
+            \hb@xt@\textwidth{%
+              \let\label\@gobble
+              \let\index\@gobble
+              \let\glossary\@gobble
+              \@thehead}%
+            \color@endbox}%
+          \dp\@tempboxa\z@
+          \box\@tempboxa
+          \vskip\headsep
+          \box\@outputbox
+          \baselineskip \footskip
+          \color@hbox
+          \normalcolor
+          \hb@xt@\textwidth{%
+            \let\label\@gobble
+            \let\index\@gobble
+            \let\glossary\@gobble
+            \@thefoot}%
+          \color@endbox}}}%
+    \global\@colht\textheight
+    \stepcounter{page}%
+    \let\firstmark\botmark
+  }%
+\else
+  \message{Sorry, evautofl.sty works only with LaTeX2e}
+\fi
+\headheight=0pt
+\headsep=0pt
+\footskip=0pt
+\marginparwidth=0pt
+\marginparsep=0pt
+\pagestyle{empty}
+\parindent=0pt
+\raggedbottom
+\columnseprule=0pt
+\raggedright
+\define@key{opt}{pageheight}{%
+  \af@textheight=#1\relax}
+\define@key{opt}{pagewidth}{%
+  \af@halftextwidth=#1\relax}
+\define@key{opt}{columnsep}{%
+  \columnsep=#1\relax}
+\define@key{opt}{punchcluster}{%
+  \af@punchcluster=#1}
+\define@key{opt}{punchgroups}{%
+  \af@punchgroups=#1}
+\define@key{opt}{interspace}{%
+  \af@interspace=#1}
+\define@key{opt}{intraspace}{%
+  \af@intraspace=#1}
+\define@key{opt}{grip}{%
+  \af@grip=#1}
+\define@key{opt}{punchmargin}{%
+  \af@punchmargin=#1}
+\define@key{opt}{punchpoints}{%
+  \af@punchsize=#1}
+\define@key{opt}{topspace}{%
+  \af@topmargin=#1}
+\define@key{opt}{bottomspace}{%
+  \af@bottommargin=#1}
+\define@key{opt}{jawspread}{%
+  \af@jawspread=#1}
+\define@key{opt}{jawline}{%
+  \af@jawline=#1}
+\af@textheight=172mm
+\af@halftextwidth=95mm
+\columnsep=14pt
+\af@punchcluster=3
+\af@punchgroups=2
+\af@interspace=51.25mm
+\af@intraspace=19.25mm
+\af@grip=5mm
+\af@punchmargin=2mm
+\af@punchsize=15
+\af@topmargin=2pt
+\af@bottommargin=0pt
+\af@jawline=0.4pt
+\def\autofilo#1{%
+  \setkeys{opt}{#1}%
+  \af@textwidth=\paperwidth
+  \advance\af@textwidth by -\af@textheight
+  \divide\af@textwidth by 2
+  \oddsidemargin=-1in
+  \advance\oddsidemargin by \af@textwidth
+  \evensidemargin=-1in
+  \advance\evensidemargin by \af@textwidth
+  \af@textwidth=\paperheight
+  \advance\af@textwidth by -\af@halftextwidth
+  \divide\af@textwidth by 2
+  \topmargin=-1in
+  \advance\topmargin by \af@textwidth
+  \relax
+  \landscape
+  \af@halfjawspread=\af@jawspread
+  \divide\af@halfjawspread by 2
+  \af@punchwidth=\af@punchsize pt
+  \af@halfpunchwidth=\af@punchwidth
+  \divide\af@halfpunchwidth by 2
+  \textheight=\af@textheight
+  \advance\textheight by -\af@topmargin
+  \advance\textheight by -\af@bottommargin
+  \af@textwidth=\af@halftextwidth
+  \multiply\af@textwidth by 2
+  \textwidth=\af@textwidth
+  \advance\textwidth by -2\af@punchwidth
+  \advance\textwidth by -2\af@grip
+  \advance\textwidth by -2\af@punchmargin
+  \af@marginrel=\af@grip
+  \advance\af@marginrel by \af@punchmargin
+  \advance\af@marginrel by \af@punchwidth
+  \vsize=\textheight
+  \hsize=\textwidth
+  \@colroom=\vsize
+  \@colht=\vsize
+  \if@usequadruplecolumn
+    \quadruplecolumn
+  \else
+    \twocolumn
+  \fi}
+\def\endautofilo{%
+  \endlandscape}
+\endinput
+%%
+%% End of file `evautofl.sty'.

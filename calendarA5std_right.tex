@@ -1,0 +1,128 @@
+\documentclass{article}
+% by qu xiaofeng
+% October 4, 2011
+
+\usepackage[paperwidth=148mm, paperheight=210mm]{geometry}
+\usepackage{stmaryrd}
+\usepackage{background}
+\usetikzlibrary{calc}
+% revise the postion if need
+\hoffset=-16mm
+\voffset=0mm
+\oddsidemargin=-1mm
+\evensidemargin=0mm
+\textwidth=124mm
+\topmargin=-25mm
+\textheight=180mm
+\parindent=0mm
+
+% background
+\SetBgScale{1}
+\SetBgColor{black}
+\SetBgAngle{0}
+\SetBgOpacity{1}
+\SetBgVshift{0}
+\SetBgContents{
+\begin{tikzpicture}[thick]
+\draw[opacity=0] (0.52\textwidth,0.44\textheight) -- (0.52\textwidth,0.52\textheight) -- (0.4\textwidth,0.52\textheight);
+\draw[opacity=0] (-0.52\textwidth,0.44\textheight) -- (-0.52\textwidth,0.52\textheight) -- (-0.4\textwidth,0.52\textheight);
+\draw[opacity=0] (-0.52\textwidth,-0.44\textheight) -- (-0.52\textwidth,-0.52\textheight) -- (-0.4\textwidth,-0.52\textheight);
+\draw[opacity=0] (0.52\textwidth,-0.44\textheight) -- (0.52\textwidth,-0.52\textheight) -- (0.4\textwidth,-0.52\textheight);
+\draw (0.5\textwidth+6mm,40mm) circle (2.5mm);
+\draw (0.5\textwidth+6mm,-40mm) circle (2.5mm);
+\end{tikzpicture}
+}
+
+\pagestyle{empty}
+
+\usepackage[weather]{ifsym}
+
+\usepackage{calendar}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{2 on 1}[a4paper,landscape,border shrink=0mm]
+
+\begin{document}
+
+% DEFINITIONS ***************************************************
+
+
+\def \blank  {\phantom{x}}
+
+\def \placeholder {$\;$ }
+
+\def \blankrow {{\bf \phantom{xxxxxxxxxxxxxxxxxxxxxxxxxx}}%
+&{\bf \phantom{xxxxxxxxxxxxxxxxxxxxxxxxxx}}}
+
+\def \weathersymbols {\Sun\phantom{xx}\SunCloud\phantom{xx}\RainCloud\phantom{xxxx}}
+
+\newcommand{\planitem}[2]{{#1}&{#2}}
+
+\newcommand{\checklist}{
+% MAKE CHECK LIST ***********************************************
+\begin{table}[ht!]
+\centering
+\begin{tabular}{lr}
+\hline
+\planitem{\it Monday}{\weathersymbols}\\ \hline
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\hline
+\planitem{\it Tuesday}{\weathersymbols}\\ \hline
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\hline
+\planitem{\it Wednesday}{\weathersymbols}\\ \hline
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\hline
+\planitem{\it Thursday}{\weathersymbols}\\ \hline
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\hline
+\planitem{\it Friday}{\weathersymbols}\\ \hline
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\hline
+\planitem{\it Saturday}{\weathersymbols}\\ \hline
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\hline
+\planitem{\it Sunday}{\weathersymbols}\\ \hline
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\hline
+\end{tabular}
+\end{table}
+}
+
+
+\checklist
+\clearpage
+\checklist
+\clearpage
+
+
+
+\end{document}

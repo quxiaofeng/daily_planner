@@ -1,0 +1,57 @@
+evautofl.sty
+============
+
+This package provides an environment within which pages are framed with cut
+lines and printed with punch-marks, so that printed text can easily be
+inserted into a filofax or binder.
+
+
+Changes in v0.3 (2005/01/20)
+o Corrected (really!) the unequal spacing of punchgroups.
+o Corrected the odd framed pages' outer margin.
+
+Changes in v0.2 (2005/01/14)
+o Added a little stupid example of use.
+o Corrected the effects of punchmargin on odd pages.
+o Corrected the unequal spacing of punchgroups.
+
+Changes in v0.1 (2003/03/21)
+o First public release; there are certainly some bugs.
+
+-------------------------------------------------------------------
+  Author: Emanuele Vicentini
+          (emanuelevicentini at yahoo dot it)
+
+  Copyright 2003, 2005 Emanuele Vicentini
+
+  This work may be distributed and/or modified under the
+  conditions of the LaTeX Project Public License, either
+  version 1.3a of this license or (at your option) any
+  later version.
+  The latest version of the license is in
+     http://www.latex-project.org/lppl.txt
+
+  This work has the LPPL maintenance status "author-maintained".
+
+  This work consists of the files: README, evautofl.dtx, evautofl.ins
+  and the derived files evautofl.sty and evautoflexample.tex
+-------------------------------------------------------------------
+
+
+    The distribution consists of the following files:
+README               (this file)
+evautofl.{dtx,ins}   Package source and installation files
+evautofl.pdf         Documentation in PDF
+evautoflexample.pdf  Example of this package output in PDF
+
+
+    To install the package:
+o run: latex evautofl.ins (which will generate evautofl.sty and
+                           evautoflexample.tex)
+o move evautofl.sty where LaTeX will find it (in a local texmf tree could
+  be tex/latex/calendar/contrib/) and refresh the file database.
+
+
+2005/01/20
+Emanuele Vicentini
+(emanuelevicentini at yahoo dot it)

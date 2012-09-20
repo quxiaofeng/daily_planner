@@ -1,0 +1,77 @@
+%%
+%% evautofl.ins
+%% Copyright 2003, 2005 Emanuele Vicentini
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either
+%% version 1.3a of this license or (at your option) any
+%% later version.
+%% The latest version of the license is in
+%%    http://www.latex-project.org/lppl.txt
+%%
+%% Author: Emanuele Vicentini
+%%         (emanuelevicentini at yahoo dot it)
+%%
+%% This work has the LPPL maintenance status "author-maintained".
+%%
+%% This work consists of the files: README, evautofl.dtx, evautofl.ins and
+%% the derived files evautofl.sty and evautoflexample.tex
+%% 
+%% This file will generate fast loadable files and documentation
+%% driver files from the doc files in this package when run through
+%% LaTeX or TeX.
+%%
+%% --------------- start of docstrip commands ------------------
+%%
+\input docstrip
+\preamble
+
+ Copyright 2003, 2005 Emanuele Vicentini
+
+ This work may be distributed and/or modified under the
+ conditions of the LaTeX Project Public License, either
+ version 1.3a of this license or (at your option) any
+ later version.
+ The latest version of the license is in
+    http://www.latex-project.org/lppl.txt
+
+ Author: Emanuele Vicentini
+         (emanuelevicentini at yahoo dot it)
+
+ This work has the LPPL maintenance status "author-maintained".
+
+ This work consists of the files: README, evautofl.dtx, evautofl.ins
+ and the derived files evautofl.sty and evautoflexample.tex
+
+ Original author: Frank Bennett
+                  at fb@soas.ac.uk
+
+\endpreamble
+
+\keepsilent
+\askforoverwritefalse
+
+\Msg{*** Generating the package files ***}
+\generate{\file{evautofl.sty}{\from{evautofl.dtx}{style}}%
+          \nopostamble
+          \file{evautoflexample.tex}{\from{evautofl.dtx}{example}}}
+
+\Msg{***********************************************************}
+\Msg{*}
+\Msg{* To finish the installation you have to move the following}
+\Msg{* files into a directory searched by TeX:}
+\Msg{*}
+\Msg{* \space\space evautofl.sty}
+\Msg{*}
+\Msg{*}
+\Msg{* To produce the documentation on evautofl's code run the}
+\Msg{* file ending with `.dtx' through LaTeX.}
+\Msg{* Process the file evautofl.idx by:}
+\Msg{* \space\space\space\space makeindex -s gind.ist evautofl}
+\Msg{* Process the file evautofl.glo by:}
+\Msg{* \space\space\space\space makeindex -s gglo.ist -o evautofl.gls evautofl.glo}
+\Msg{*}
+\Msg{* Happy TeXing}
+\Msg{***********************************************************}
+
+\endbatchfile
