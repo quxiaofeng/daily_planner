@@ -2,7 +2,7 @@ Daily Planner on LaTeX
 =======================
 
 - Author: Qu Xiaofeng
-- [GitHub Project Page](https://github.com/quxiaofeng/DailyPlanner)
+- [GitHub Project Page](https://github.com/quxiaofeng/daily_planner)
 
 Planner
 -----------------------

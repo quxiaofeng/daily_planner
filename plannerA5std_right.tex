@@ -1,0 +1,138 @@
+\documentclass{article}
+% by qu xiaofeng
+% October 4, 2011
+
+\usepackage[paperwidth=148mm, paperheight=210mm]{geometry}
+\usepackage{stmaryrd}
+\usepackage{background}
+\usetikzlibrary{calc}
+% revise the postion if need
+\hoffset=-16mm
+\voffset=0mm
+\oddsidemargin=-4mm
+\evensidemargin=0mm
+\textwidth=124mm
+\topmargin=-20mm
+\textheight=170mm
+\parindent=0mm
+
+% background
+\SetBgScale{1}
+\SetBgColor{black}
+\SetBgAngle{0}
+\SetBgOpacity{1}
+\SetBgVshift{0}
+\SetBgContents{
+\begin{tikzpicture}[thick]
+\draw[opacity=0] (0.52\textwidth,0.44\textheight) -- (0.52\textwidth,0.52\textheight) -- (0.4\textwidth,0.52\textheight);
+\draw[opacity=0] (-0.52\textwidth,0.44\textheight) -- (-0.52\textwidth,0.52\textheight) -- (-0.4\textwidth,0.52\textheight);
+\draw[opacity=0] (-0.52\textwidth,-0.44\textheight) -- (-0.52\textwidth,-0.52\textheight) -- (-0.4\textwidth,-0.52\textheight);
+\draw[opacity=0] (0.52\textwidth,-0.44\textheight) -- (0.52\textwidth,-0.52\textheight) -- (0.4\textwidth,-0.52\textheight);
+\draw (0.5\textwidth+3mm,40mm) circle (2.5mm);
+\draw (0.5\textwidth+3mm,-40mm) circle (2.5mm);
+\end{tikzpicture}
+}
+
+\pagestyle{empty}
+
+\usepackage[weather]{ifsym}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{2 on 1}[a4paper,landscape,border shrink=0mm]
+
+\begin{document}
+
+% DEFINITIONS ***************************************************
+
+
+\def \blank  {\phantom{x}}
+
+\def \placeholder {$\;$ }
+
+\def \blankrow {{\bf \phantom{xx}}%
+&{\bf \phantom{xxxxxxx}}%
+&{\bf \phantom{xxxxxxxxxxxxxx}}%
+&{\bf \phantom{xxxxxxxxxxxxxx}}%
+&{\bf \phantom{xxxxx}}}
+
+\def \headingline {{\bf Time}%
+&{\bf Task}%
+&{\bf Schedule}%
+&{\bf Activity}%
+&{\bf Evaluation}}
+
+\def \evaluate {\bf \phantom{}$\boxempty$\phantom{}}
+
+\newcommand{\planitem}[1]{
+{#1} & {\placeholder} & {\placeholder} & {\placeholder} & \evaluate
+}
+
+\newcommand{\memotitle}[1]{
+{\placeholder} & {\placeholder} & {\bf {#1}} & {\placeholder} & {\placeholder}
+}
+\newcommand{\checklist}[2]{
+% MAKE CHECK LIST ***********************************************
+\begin{table}[ht!]
+
+{\bf \Large {Work Diary {#1}}}
+{\bf \phantom{x}{#2}\,}
+
+\centering
+\begin{tabular}{rcccr}
+\blankrow\\
+\blankrow\\
+\headingline\\
+\hline
+% Table  ********************************************************
+
+\planitem{ 6:00}\\ \hline
+\planitem{ 7:00}\\ \hline
+\planitem{ 8:00}\\ \hline
+\planitem{ 9:00}\\ \hline
+\planitem{10:00}\\ \hline
+\planitem{11:00}\\ \hline
+\planitem{12:00}\\ \hline
+\planitem{13:00}\\ \hline
+\planitem{14:00}\\ \hline
+\planitem{15:00}\\ \hline
+\planitem{16:00}\\ \hline
+\planitem{17:00}\\ \hline
+\planitem{18:00}\\ \hline
+\planitem{19:00}\\ \hline
+\planitem{20:00}\\ \hline
+\planitem{21:00}\\ \hline
+\planitem{22:00}\\ \hline
+\planitem{23:00}\\ \hline
+\planitem{ 0:00}\\ \hline
+\planitem{ 1:00}\\ \hline
+\planitem{ 2:00}\\ \hline
+\blankrow\\
+\blankrow\\
+
+\memotitle{Memo} \\ \hline
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\blankrow\\
+\hline
+\end{tabular}
+\end{table}
+}
+
+
+\checklist{\underline{\makebox[3.77cm][l]{}}}{\Sun\phantom{xxx}\SunCloud\phantom{xxx}\FilledRainCloud\phantom{xxx}}
+\clearpage
+\checklist{\underline{\makebox[3.77cm][l]{}}}{\Sun\phantom{xxx}\SunCloud\phantom{xxx}\FilledRainCloud\phantom{xxx}}
+\clearpage
+
+
+
+\end{document}

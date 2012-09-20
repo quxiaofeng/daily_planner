@@ -5,8 +5,8 @@
 *.toc
 # ignore vim temp files
 *~
-# ignore generated pdf files
-*.pdf
+# add generated pdf files as examples
+# *.pdf
 # README.md test output
 README.html
 # temp file

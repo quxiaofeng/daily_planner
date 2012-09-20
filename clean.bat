@@ -3,6 +3,6 @@ del *.aux
 del *.log
 del *.toc
 del *.html
-del *.pdf
+REM del *.pdf
 del *~
 del *.swp
